@@ -1,19 +1,20 @@
 ---
-title: 这是我的第一个文章
+title: 第一个Python程序
 date: 2021-04-12
 sidebar: 'auto'
 categories:
- - 博文
+ - 编程
 tags:
- - 日常
+ - python
 ---
 
-::: tip
-醉后不知天在水，满船清梦压星河
-:::
 <!-- more -->
 
-## 第二篇文章
+## Python 第一个程序
 
+```Python
+print(
+    'hello world!'
+    )
+```
 
-你好
