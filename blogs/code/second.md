@@ -8,7 +8,7 @@ tags:
  - python
 ---
 
-
+<!-- more -->
 
 ## Python 第一个程序
 
@@ -17,4 +17,4 @@ print(
     'hello world!'
     )
 ```
-<!-- more -->
+
