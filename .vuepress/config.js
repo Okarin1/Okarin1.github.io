@@ -1,7 +1,6 @@
 module.exports = {
   "title": "送报少年",
   "description": "EL PSY CONGROO!",
-  "dest": "public",
   "head": [
     [
       "link",
