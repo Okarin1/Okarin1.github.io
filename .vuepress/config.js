@@ -42,7 +42,7 @@ module.exports = {
         "items": [
           {
             "text": "vue.js",
-            "link": "/docs/vue.js/"
+            "link": "/docs/vue.js"
           }
         ]
       },
@@ -98,7 +98,6 @@ module.exports = {
         "avatar": "https://qcyblm.gitee.io/hero.webp",
         "link": "https://qcyblm.gitee.io/"
       }
-
     ],
     "logo": "/logo.png",
     "search": true,
