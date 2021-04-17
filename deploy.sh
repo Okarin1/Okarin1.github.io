@@ -1,6 +1,6 @@
 yarn build
 
-cd public
+cd .vuepress/dist
 
 
 git init
