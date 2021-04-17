@@ -91,7 +91,14 @@ module.exports = {
         "desc": "A simple and beautiful vuepress Blog & Doc theme.",
         "avatar": "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
         "link": "https://vuepress-theme-reco.recoluan.com"
+      },
+      {
+        "title": "青春永不落幕",
+        "desc": "记录软件下载平台和网络学习过程中的笔记：VuePress、Git、Windows",
+        "avatar": "https://qcyblm.gitee.io/hero.webp",
+        "link": "https://qcyblm.gitee.io/"
       }
+
     ],
     "logo": "/logo.png",
     "search": true,
