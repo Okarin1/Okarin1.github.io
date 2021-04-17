@@ -1,0 +1,38 @@
+name: vuepress-deploy
+on: 
+  push:
+    branches:
+      - blogcode
+env:
+  TZ: Asia/Shanghai
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 15.x
+      - name: Install packages
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Deploy
+        env:
+          NAME: ${{ secrets.ACCESS_NAME }}
+          EMAIL: ${{ secrets.ACCESS_EMAIL }}
+          ORIGIN: ${{ secrets.ACCESS_ORIGIN }}
+        run: |
+          cd .vuepress/dist
+          git config --global init.defaultBranch master
+          git init
+          git config user.name "$NAME"
+          git config user.email "$EMAIL"
+          git add -A
+          git commit -q -m "Auto Deploy from Github Actions: $(date +"%Y-%m-%d %H:%M")"
+          git push -f "$ORIGIN" master
