@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: 送报少年
+heroText:
 tagline: 世界上并没有完美的程序，但我们并不因此而沮丧
 # heroImageStyle: {
 #   maxWidth: '600px',
