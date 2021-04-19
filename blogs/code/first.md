@@ -1,5 +1,5 @@
 ---
-title: 这是我的第一个文章
+title: 开始的地方
 date: 2021-04-11
 sidebar: 'auto'
 categories:
@@ -9,8 +9,6 @@ tags:
 ---
 
 ::: tip
-如果你看到这条消息 那么就成功了
+Hello World!
 :::
 <!-- more -->
-
-## 这是我的第一篇文章
