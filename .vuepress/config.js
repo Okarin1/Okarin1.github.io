@@ -26,16 +26,21 @@ module.exports = {
 
   "themeConfig": {
     "nav": [
+      
       {
         "text": "主页",
         "link": "/",
         "icon": "reco-home"
       },
+      
+      
       {
         "text": "时间线",
         "link": "/timeline/",
         "icon": "reco-date"
       },
+      
+      
       {
         "text": "文档",
         "icon": "reco-message",
@@ -46,6 +51,14 @@ module.exports = {
           }
         ]
       },
+
+      {
+        "text": "导航",
+        "icon": "reco-menu",
+        "link": "/blogs/web/"
+      },
+      
+      
       {
         "text": "联系",
         "icon": "reco-message",
@@ -54,18 +67,37 @@ module.exports = {
             "text": "GitHub",
             "link": "https://github.com/Okarin1",
             "icon": "reco-github"
+          },
+          {
+            "text": "QQ",
+            "link": "http://wpa.qq.com/msgrd?v=3&uin=201747922&site=qq&menu=yes",
+            "icon": "reco-qq"
           }
         ]
       }
     ],
+
+
     subSidebar: 'auto'//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
     ,
+
     "sidebar": {
       "/docs/vue/": [
         "",
         "install"
       ]
     },
+
+
+
+    valineConfig: {
+      appId: 'yeDg5szPSdXGKoeivis6nl2n-gzGzoHsz',// your appId
+      appKey: 'wiFT09cYp9C3CnRqJ0mvaKVO', // your appKey
+    },
+
+
+
+
     "type": "blog",
     "blogConfig": {
       "category": {
