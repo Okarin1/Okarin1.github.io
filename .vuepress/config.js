@@ -87,7 +87,10 @@ module.exports = {
     "sidebar": {
       "/docs/vue/": [
         "",
-        "install"
+        "install",
+        "DOM",
+        "example",
+        "responsive"
       ]
     },
 
