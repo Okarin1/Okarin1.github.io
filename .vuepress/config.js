@@ -1,6 +1,12 @@
 module.exports = {
+  locales: {
+    '/': {
+      lang: 'zh-CN'
+    }
+  },
   "title": "送报少年",
   "description": "EL PSY CONGROO!",
+  
   "head": [
     [
       "link",
@@ -17,85 +23,28 @@ module.exports = {
       }
     ]
   ],
+
+  "markdown": {
+    "lineNumbers": true
+  }
+  ,
   "theme": "reco",
-  locales: {
-    '/': {
-      lang: 'zh-CN'
-    }
-  },
+  
+
 
   "themeConfig": {
     "nav": [
-      
-      {
-        "text": "主页",
-        "link": "/",
-        "icon": "reco-home"
-      },
-      
-      
-      {
-        "text": "时间线",
-        "link": "/timeline/",
-        "icon": "reco-date"
-      },
-      
-      
-      {
-        "text": "文档",
-        "icon": "reco-message",
-        "items": [
+      {"text": "主页","link": "/","icon": "reco-home"},
+      {"text": "时间线","link": "/timeline/","icon": "reco-date"},
+      {"text": "文档","icon": "reco-message","items": [
           {
             "text": "Vue.js",
             "link": "/docs/vue/"
           }
         ]
       },
-
-      {
-        "text": "导航",
-        "icon": "reco-menu",
-        "link": "/blogs/web/"
-      },
-      
-      
-      {
-        "text": "联系",
-        "icon": "reco-message",
-        "items": [
-          {
-            "text": "GitHub",
-            "link": "https://github.com/Okarin1",
-            "icon": "reco-github"
-          },
-          {
-            "text": "QQ",
-            "link": "http://wpa.qq.com/msgrd?v=3&uin=201747922&site=qq&menu=yes",
-            "icon": "reco-qq"
-          }
-        ]
-      }
+      {"text": "导航","icon": "reco-menu","link": "/blogs/web/"},
     ],
-
-
-    subSidebar: 'auto'//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
-    ,
-
-    "sidebar": {
-      "/docs/vue/": [
-        "",
-        "install"
-      ]
-    },
-
-
-
-    valineConfig: {
-      appId: 'yeDg5szPSdXGKoeivis6nl2n-gzGzoHsz',// your appId
-      appKey: 'wiFT09cYp9C3CnRqJ0mvaKVO', // your appKey
-    },
-
-
 
 
     "type": "blog",
@@ -107,8 +56,47 @@ module.exports = {
       "tag": {
         "location": 3,
         "text": "标签"
-      }
+      },
+      "socialLinks": [     // 信息栏展示社交信息
+        { icon: 'reco-github', link: 'https://github.com/Okarin1' },
+        { icon: 'reco-qq', link: 'http://wpa.qq.com/msgrd?v=3&uin=201747922&site=qq&menu=yes' },
+        { icon: 'reco-mail', link: 'mailto:okarin1024@163.com' },
+        { icon: 'reco-zhihu', link: 'https://www.zhihu.com/people/qing-qi-gu-jiu-8' },
+        { icon: 'reco-weibo', link: 'https://weibo.com/u/6331216566' },
+        { icon: 'reco-bilibili', link: 'https://space.bilibili.com/23812673' },
+      ]
     },
+
+    "logo": "/logo.png",
+    "search": true,
+    "searchMaxSuggestions": 10,
+    "lastUpdated": "Last Updated",
+    "author": "Okarin",
+    "authorAvatar": "/avatar.png",
+    "record": "蜀ICP备20013490号-1",
+    "recordLink": 'http://beian.miit.gov.cn/',
+    "startYear": "2020",
+
+
+    /**
+       * 密钥 (if your blog is private)
+      */
+
+    
+    subSidebar: 'auto' ,//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
+    "sidebar": {
+      "/docs/vue/": [
+        "",
+        "install"
+      ]
+    },
+
+    valineConfig: {
+      appId: 'yeDg5szPSdXGKoeivis6nl2n-gzGzoHsz',// your appId
+      appKey: 'wiFT09cYp9C3CnRqJ0mvaKVO', // your appKey
+    },
+
+
     friendLink: [
       {
         title: 'vuepress-theme-reco',
@@ -129,19 +117,7 @@ module.exports = {
         link: 'https://qcyblm.gitee.io/'
       }
     ],
-  
-    "logo": "/logo.png",
-    "search": true,
-    "searchMaxSuggestions": 10,
-    "lastUpdated": "Last Updated",
-    "author": "Okarin",
-    "authorAvatar": "/avatar.png",
-    "record": "蜀ICP备20013490号-1",
-    "startYear": "2020"
   },
-  "markdown": {
-    "lineNumbers": true
-  }
 
 
 }
