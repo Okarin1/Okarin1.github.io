@@ -1,6 +1,10 @@
 ---
 title: Vue.js 响应式
 date: 2021-04-03
+categories:
+ - Vue.js
+tags:
+ - Vue.js
 ---
 
 ## 数据响应式原理

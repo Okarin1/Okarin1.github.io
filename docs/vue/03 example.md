@@ -1,6 +1,10 @@
 ---
 title: Vue.js 起步
 date: 2021-04-02
+categories:
+ - Vue.js
+tags:
+ - Vue.js
 ---
 
 
@@ -29,7 +33,7 @@ var vm = new Vue({
 </div>
 ```
 
-JS
+**JS**
 
 ```js
 var vm = new Vue({

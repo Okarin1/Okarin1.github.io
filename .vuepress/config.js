@@ -87,10 +87,11 @@ module.exports = {
     "sidebar": {
       "/docs/vue/": [
         "",
-        "install",
-        "DOM",
-        "example",
-        "responsive"
+        "01 install",
+        "02 DOM",
+        "03 example",
+        "04 responsive",
+        "05 Chazhi"
       ]
     },
 
@@ -118,6 +119,12 @@ module.exports = {
         desc: '记录软件下载平台和网络学习过程中的笔记：VuePress、Git、Windows',
         logo: "https://qcyblm.gitee.io/hero.webp",
         link: 'https://qcyblm.gitee.io/'
+      },
+      {
+        title: '演员UyoAhz',
+        desc: '得不到的永远得不到，回不来的永远回不来。',
+        logo: "https://q1.qlogo.cn/g?b=qq&nk=2496091142&s=640",
+        link: 'https://uyoahz.cn/'
       }
     ],
   },

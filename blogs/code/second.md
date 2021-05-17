@@ -5,7 +5,7 @@ sidebar: 'auto'
 categories:
  - Python
 tags:
- - Python
+ - Python 
 ---
 
 <!-- more -->
