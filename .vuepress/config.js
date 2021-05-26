@@ -92,6 +92,7 @@ module.exports = {
         "03example",
         "04responsive",
         "05Chazhi",
+        "06Shuxing",
       ]
     },
 
@@ -120,12 +121,6 @@ module.exports = {
         logo: "https://qcyblm.gitee.io/hero.webp",
         link: 'https://qcyblm.gitee.io/'
       },
-      {
-        title: '演员UyoAhz',
-        desc: '得不到的永远得不到，回不来的永远回不来。',
-        logo: "https://q1.qlogo.cn/g?b=qq&nk=2496091142&s=640",
-        link: 'https://uyoahz.cn/'
-      }
     ],
   },
 
