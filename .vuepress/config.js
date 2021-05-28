@@ -93,6 +93,7 @@ module.exports = {
         "04responsive",
         "05Chazhi",
         "06Shuxing",
+        "07Shijian",
       ]
     },
 
