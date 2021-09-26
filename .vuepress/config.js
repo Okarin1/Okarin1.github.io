@@ -40,7 +40,12 @@ module.exports = {
           {
             "text": "Vue.js",
             "link": "/docs/vue/"
+          },
+          {
+            "text": "微信小程序",
+            "link": "/docs/wechat/"
           }
+
         ]
       },
       {"text": "导航","icon": "reco-menu","link": "/blogs/web/"},
@@ -85,6 +90,19 @@ module.exports = {
     
     subSidebar: 'auto' ,//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
     "sidebar": {
+      "/docs/wechat/": [
+        "",
+        "01wechat",
+        "02wechat",
+        "03wechat",
+        "04wechat",
+        "05wechat",
+        "06wechat",
+        "07wechat",
+        "08wechat",
+        "09wechat",
+        "10wechat",
+      ],
       "/docs/vue/": [
         "",
         "01install",
@@ -94,7 +112,7 @@ module.exports = {
         "05Chazhi",
         "06Shuxing",
         "07Shijian",
-      ]
+      ],
     },
 
     valineConfig: {
