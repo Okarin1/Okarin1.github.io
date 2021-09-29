@@ -37,6 +37,11 @@ module.exports = {
       {"text": "主页","link": "/","icon": "reco-home"},
       {"text": "时间线","link": "/timeline/","icon": "reco-date"},
       {"text": "文档","icon": "reco-message","items": [
+          
+          {
+          "text": "JavaScript",
+          "link": "/docs/JavaScript/"
+          },
           {
             "text": "Vue.js",
             "link": "/docs/vue/"
@@ -44,7 +49,7 @@ module.exports = {
           {
             "text": "微信小程序",
             "link": "/docs/wechat/"
-          }
+          },
 
         ]
       },
@@ -53,6 +58,8 @@ module.exports = {
 
 
     "type": "blog",
+
+    
     "blogConfig": {
       "category": {
         "location": 2,
@@ -112,6 +119,10 @@ module.exports = {
         "05Chazhi",
         "06Shuxing",
         "07Shijian",
+      ],
+      "/docs/JavaScript/": [
+        "",
+        "01javascript",
       ],
     },
 

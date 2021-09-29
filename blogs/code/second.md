@@ -3,7 +3,7 @@ title: Python实现记录bilibili粉丝数
 date: 2021-04-12
 sidebar: 'auto'
 categories:
- - Python
+ - blog
 tags:
  - Python 
 ---

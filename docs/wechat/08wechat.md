@@ -1,5 +1,5 @@
 ---
-title: 微信小程序第八课
+title: 微信小程序 全局传值
 date: 2021-07-07
 categories:
  - 微信小程序

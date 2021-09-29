@@ -1,5 +1,5 @@
 ---
-title: 微信小程序第六课
+title: 微信小程序 导航栏
 date: 2021-07-05
 categories:
  - 微信小程序

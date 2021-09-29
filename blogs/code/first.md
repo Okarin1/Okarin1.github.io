@@ -3,9 +3,9 @@ title: 博客添加QQ链接
 date: 2021-05-13
 sidebar: 'auto'
 categories:
- - 博客
+ - blog
 tags:
- - 教程
+ - blog
 ---
 
 <!-- more -->

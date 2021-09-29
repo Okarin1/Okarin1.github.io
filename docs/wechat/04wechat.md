@@ -1,5 +1,5 @@
 ---
-title: 微信小程序第四课
+title: 微信小程序 app.js
 date: 2021-07-03
 categories:
  - 微信小程序
