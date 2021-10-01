@@ -123,6 +123,8 @@ module.exports = {
       "/docs/JavaScript/": [
         "",
         "01javascript",
+        "02javascript",
+        "03javascript",
       ],
     },
 
