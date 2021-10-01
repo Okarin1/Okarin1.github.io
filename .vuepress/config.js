@@ -144,14 +144,14 @@ module.exports = {
       {
         title: '午后南杂',
         desc: 'Enjoy when you can, and endure when you must.',
-        email: 'recoluan@qq.com',
+        logo: "https://www.recoluan.com/head.png",
         link: 'https://www.recoluan.com'
       },
       {
         title: '青春永不落幕',
         desc: '记录软件下载平台和网络学习过程中的笔记：VuePress、Git、Windows',
-        logo: "https://qcyblm.gitee.io/hero.webp",
-        link: 'https://qcyblm.gitee.io/'
+        logo: "https://qcyblm.github.io/vuepress/favicon.ico",
+        link: 'https://qcyblm.github.io/'
       },
     ],
   },
