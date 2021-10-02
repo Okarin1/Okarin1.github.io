@@ -521,3 +521,4 @@ function getSum() {
         console.log(fun2()); // 函数返回的结果是 undefined
 
 ```
+
