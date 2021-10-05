@@ -129,6 +129,8 @@ module.exports = {
         "05javascript",
         "06javascript",
         "07javascript",
+        "08javascript",
+        "09javascript",
       ],
     },
 
