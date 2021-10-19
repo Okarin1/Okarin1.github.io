@@ -7,7 +7,7 @@ tags:
  - JavaScript
 ---
 
-
+<!-- more -->
 ##　函数进阶
 
 ### arguments的使用

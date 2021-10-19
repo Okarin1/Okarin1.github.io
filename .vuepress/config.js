@@ -178,10 +178,10 @@ module.exports = {
         link: 'https://www.recoluan.com'
       },
       {
-        title: '青春永不落幕',
-        desc: '记录软件下载平台和网络学习过程中的笔记：VuePress、Git、Windows',
-        logo: "https://qcyblm.github.io/vuepress/favicon.ico",
-        link: 'https://qcyblm.github.io/'
+        title: 'lookroot的个人空间',
+        desc: '追求理想与现实的平衡',
+        logo: "https://www.lookroot.cn/logo.png",
+        link: 'https://www.lookroot.cn/'
       },
     ],
   },

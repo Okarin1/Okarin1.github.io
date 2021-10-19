@@ -1,6 +1,11 @@
 ---
-title: Vue.js 简介
+title: Vue.js 个人学习笔记
 date: 2021-03-29
+categories:
+ - Vue.js
+tags:
+ - Vue.js 
+sticky: 2
 ---
 
 ## Vue.js介绍

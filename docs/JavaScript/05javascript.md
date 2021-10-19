@@ -6,7 +6,7 @@ categories:
 tags:
  - JavaScript
 ---
-
+<!-- more -->
 ## 预解析
 
 * js引擎运行js 分为两步：  预解析  代码执行

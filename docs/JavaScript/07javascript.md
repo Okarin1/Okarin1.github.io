@@ -6,7 +6,7 @@ categories:
 tags:
  - JavaScript
 ---
-
+<!-- more -->
  ## Web API 
 
 浏览器预留的接口

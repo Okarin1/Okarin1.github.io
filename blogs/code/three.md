@@ -8,6 +8,8 @@ tags:
  - Python 
 ---
 
+<!-- more -->
+
 ## 写在前面
 >项目地址: [https://github.com/okarin1/netease-python](https://github.com/okarin1/netease-python) 
 

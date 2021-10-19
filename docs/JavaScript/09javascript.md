@@ -6,7 +6,7 @@ categories:
 tags:
  - JavaScript
 ---
-
+<!-- more -->
 ## 节点操作
 
 节点获取元素逻辑性更强

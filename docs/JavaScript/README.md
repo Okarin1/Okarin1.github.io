@@ -1,13 +1,14 @@
 ---
-title: JavaScript 数据类型
+title: JavaScript 个人学习笔记
 date: 2021-02-01
 categories:
  - JavaScript
 tags:
  - JavaScript
  - js类型转换
+sticky: 3
 ---
-
+<!-- more -->
 ## JavaScript初体验
 
 1、HTML是网页的结构，CSS是网页的外观，而JavaScript是页面的行为。

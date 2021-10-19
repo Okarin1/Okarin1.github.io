@@ -7,6 +7,8 @@ tags:
  - JavaScript
 ---
 
+<!-- more -->
+
 ## 算术运算符
 
 ```js

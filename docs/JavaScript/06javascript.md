@@ -6,7 +6,7 @@ categories:
 tags:
  - JavaScript
 ---
-
+<!-- more -->
 ## 内置对象
 
 js语言自带的一些对象 Math String Date Array 等

@@ -6,7 +6,7 @@ categories:
 tags:
  - JavaScript
 ---
-
+<!-- more -->
 ## 数组
 
  > 数组(Array) ：就是一组数据的集合 存储在单个变量下 

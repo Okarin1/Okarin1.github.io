@@ -7,6 +7,7 @@ tags:
  - JavaScript
 ---
 
+<!-- more -->
 ## for 循环
 
 ```js
