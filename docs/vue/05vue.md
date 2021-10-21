@@ -5,7 +5,7 @@ categories:
  - Vue.js
 tags:
  - Vue.js 
- - Vue语法
+ - 插值绑定
 ---
 
 # 插值绑定

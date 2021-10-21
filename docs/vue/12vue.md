@@ -1,141 +1,98 @@
 ---
-title: Vue.js fetch和axios
-date: 2021-04-11
+title: Vue.js 组件介绍
+date: 2021-04-12
 categories:
  - Vue.js
-tags:
- - Vue.js 
- - Vue语法
+
 ---
 
-# fetch&axios
+# 组件介绍
 
-XMLHttpRequest 是一个设计粗糙的 API，配置和调用方式非常混乱 ，基于事件的异步模型写起来不友好且兼容性不好。
+![image-20200214190256593](https://cn.vuejs.org/images/components.png)
 
-因此我们可以学习去使用fetch&axios。
 
-## fetch
 
-[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) 提供了一个 JavaScript接口，用于访问和操纵HTTP管道的部分，例如请求和响应。它还提供了一个全局 [`fetch()`](https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalFetch/fetch)方法，该方法提供了一种简单，合理的方式来跨网络异步获取资源。
+## 组件化的意义
 
-这种功能以前是使用  [`XMLHttpRequest`](https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest)实现的。Fetch提供了一个更好的替代方法，可以很容易地被其他技术使用，例如 `Service Workers`。Fetch还提供了单个逻辑位置来定义其他HTTP相关概念，例如CORS和HTTP的扩展。
+扩展 HTML 元素，封装可重用的代码
 
-请注意，`fetch`规范与`jQuery.ajax()`主要有三种方式的不同，牢记：
 
-- 当接收到一个代表错误的 HTTP 状态码时，从 `fetch()`返回的 Promise **不会被标记为 reject，** 即使该 HTTP 响应的状态码是 404 或 500。相反，它会将 Promise 状态标记为 resolve （但是会将 resolve 的返回值的 `ok` 属性设置为 false ），仅当网络故障时或请求被阻止时，才会标记为 reject。
-- `fetch()` **不会接受跨域 cookies；**你也不能使用`fetch()` 建立起跨域会话。其他网站的`Set-Cookie`头部字段将会被无视。
-- `fetch` **不会发送 cookies**。除非你使用了*credentials*的 [初始化选项](https://developer.mozilla.org/zh-CN/docs/Web/API/WindowOrWorkerGlobalScope/fetch#Parameters)。（自2017年8月25日以后，默认的credentials政策变更为`same-origin`。Firefox也在61.0b13版本中，对默认值进行修改）
-- 
 
-### get方式
+## 组件注册方式
 
-一个基本的 fetch请求设置起来很简单。看看下面的代码：
+### 全局组件
+
+> 全局注册的组件可以用在其被注册之后的任何 (通过 `new Vue`) 新创建的 Vue 根实例，也包括其组件树中的所有子组件的模板中。
+
+这里有一个 Vue 组件的示例：
 
 ```js
-fetch('http://example.com/movies.json').then(response=>response.json()).then(function(myJson) {
-    console.log(myJson);
-});
-```
-
-这里我们通过网络获取一个JSON文件并将其打印到控制台。最简单的用法是只提供一个参数用来指明想`fetch()`到的资源路径，然后返回一个包含响应结果的promise(一个 [`Response`](https://developer.mozilla.org/zh-CN/docs/Web/API/Response) 对象)。
-
-当然它只是一个 HTTP 响应，而不是真的JSON。为了获取JSON的内容，我们需要使用 [`json()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Body/json)方法（在[`Body`](https://developer.mozilla.org/zh-CN/docs/Web/API/Body)mixin 中定义，被 [`Request`](https://developer.mozilla.org/zh-CN/docs/Web/API/Request) 和 [`Response`](https://developer.mozilla.org/zh-CN/docs/Web/API/Response) 对象实现）。
-
-
-
-### post方式
-
-1. form编码
-
-```js
-fetch('http://example.com/movies.json',{
-    method:'post',
-    headers:{
-        'Content-Type':'application/x-www-form-urlencoded'
-    },
-    body:'name=retr0&age=1'
-}).then(res=>res.json()).then(res=>{
-    console.log(res)
+Vue.components('navbar',{
+    template:`<div>{{myname}}</div>`,//html结构
+   	data(){
+        return {
+            myname:'retr0'
+        }
+    }
 })
 ```
 
-2. json编码
+组件是可复用的 Vue 实例，且带有一个名字：在这个例子中是 `navbar`。我们可以在一个通过 `new Vue` 创建的 Vue 根实例中，把这个组件作为自定义元素来使用：
+
+```html
+<div id="box">
+    <navbar></navbar>
+</div>
+```
 
 ```js
-fetch('http://example.com/movies.json',{
-    method:'post',
-    headers:{
-        'Content-Type':'application/json'
-    },
-    body:JSON.stringify({
-        name:'retr0',
-        age:12
-    })
-}).then(res=>res.json()).then(res=>{
-    console.log(res);
-})
+new Vue({ el: '#box' })
 ```
 
+因为组件是可复用的 Vue 实例，所以它们与 `new Vue` 接收相同的选项，例如 `data`、`computed`、`watch`、`methods` 以及生命周期钩子等。仅有的例外是像 `el` 这样根实例特有的选项。
 
 
-## axios
 
-### 安装
+### 局部组件
 
-Using npm:
-
-```
-$ npm install axios
-```
-
-Using bower:
-
-```
-$ bower install axios
-```
-
-Using yarn:
-
-```
-$ yarn add axios
-```
-
-Using cdn:
-
-```
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-```
-
-### get方法
+这里有一个局部Vue组件的实例：
 
 ```js
-axios.get('https://......').then(res=>{
-    console.log(res.data) //数据在res.data中
+new Vue({
+    el:'#box',
+    components:{
+        child1:{
+            template:`<div>{{myname}}</div>`,
+            data(){
+                return {
+                    myname:'retr0Child'
+                }
+            }
+        }
+    }
 })
 ```
 
 
 
-### post方法
+## data必须是一个函数
 
-1. form编码
-
-```js
-axios.post('https://....','name=retr0&age=1').then(res=>{
-    console.log(res.data)
-})
-```
-
-2. json编码
+当我们定义这个 `navbar` 组件时，你可能会发现它的 `data` 并不是像这样直接提供一个对象：
 
 ```js
-axios.post('https://...',{ //第二个参数直接传对象，不需要JSON.stringify()
-    name:'retr0',
-    age:1
-}).then(res=>{
-    console.log(res.data)
-})
+data: {
+    myname:'retr0'
+}
 ```
 
+取而代之的是，**一个组件的 `data` 选项必须是一个函数**，因此每个实例可以维护一份被返回对象的独立的拷贝：
+
+```js
+data(){
+    return {
+        myname:'retr0'
+    }
+}
+```
 
 

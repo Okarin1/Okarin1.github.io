@@ -3,12 +3,10 @@ title: JavaScript 函数进阶与作用域
 date: 2021-02-05
 categories:
  - JavaScript
-tags:
- - JavaScript
 ---
 
 <!-- more -->
-##　函数进阶
+## 函数进阶
 
 ### arguments的使用
 

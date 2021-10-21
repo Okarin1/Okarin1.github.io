@@ -4,8 +4,8 @@ date: 2021-04-10
 categories:
  - Vue.js
 tags:
- - Vue.js 
- - Vue语法
+ - filters
+ - Mixins
 ---
 
 # filters
@@ -32,7 +32,7 @@ filters:{
 
 ```
 
-+过滤器是 JavaScript 函数，因此可以接收参数：
+*** 过滤器是 JavaScript 函数，因此可以接收参数：**
 
 ```HTML
 

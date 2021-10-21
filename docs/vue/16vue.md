@@ -1,200 +1,141 @@
 ---
-title: Vue.js 组件通信 子传父 双向绑定
-date: 2021-04-15
+title: Vue.js 组件访问之父访问子
+date: 2021-04-16
 categories:
  - Vue.js
 tags:
- - Vue.js 
- - Vue语法
----
+ - 组件通信
+--- 
 
-# 自定义事件
+# $children
 
-## 事件名
-
-不同于组件和 prop，事件名不存在任何自动化的大小写转换。而是触发的事件名需要完全匹配监听这个事件所用的名称。举个例子，如果触发一个 camelCase 名字的事件：
-
-```js
-this.$emit('myEvent')
-```
-
-则监听这个名字的 kebab-case 版本是不会有任何效果的：
-
-```js
-<!-- 没有效果 -->
-<my-component v-on:my-event="doSomething"></my-component>
-```
-
-不同于组件和 prop，事件名不会被用作一个 JavaScript 变量名或属性名，所以就没有理由使用 camelCase 或 PascalCase 了。并且 `v-on` 事件监听器在 DOM 模板中会被自动转换为全小写 (因为 HTML 是大小写不敏感的)，所以 `v-on:myEvent` 将会变成 `v-on:myevent`——导致 `myEvent` 不可能被监听到。
-
-因此，我们推荐你**始终使用 kebab-case 的事件名**。
-
-
-### 案例
+通过$children访问子组件的属性或者方法
 
 ```HTML
 
-<div id="app">
-		<cpn1 :my-title="title" :my-info = "info" @item-click = "cpnClick"></cpn1> 
-    <!-- 使用kebab-case 的事件名 -->
-</div>
+	<div id="app">
+		<cpn1></cpn1>
+		<button type="button" @click="btnClick">查看</button>
+	</div>
 
-		
+
 <template id="myCpn">
 	<div>
-		<h2>{{myTitle}}</h2>
-		<button v-for = "item in myInfo" @click="btnClick(item)">{{item.name}}</button> 
+		<h2>这是子组件</h2>
 	</div>
 </template>
+
 <script src="vue.js"></script>
-
-
 <script type="text/javascript">
 	const cpn1 = Vue.extend({
 					template:'#myCpn',
-					props:['myTitle','myInfo'],
 					methods:{
-						btnClick(item){
-								this.$emit('item-click',item) //完全匹配监听这个事件所用的名称 与监听事件一致
+							showOk(){
+								console.log('OK')
+							}
 						}
-					}
+
 				})
 				
 
-const app = new Vue({
-			el: '#app',
-			data: {
-					title:'OKarin',
-					info:[
-						{id:'a',name:'手机'},
-					  {id:'b',name:'手表'},
-						{id:'c',name:'电脑'},
-						]
-			      },
-			components:{
-				cpn1
-			},
-			methods:{
-				cpnClick(item){
-					console.log(item.name) //打印名称
-				}
-			}
-		})
-     
+	const app = new Vue({
+					el: '#app',
+					data: {
+						name:'Retr0'
+					},
+					components:{
+						cpn1
+					},
+					methods:{
+						btnClick(){
+              console.log(this.$children)
+							this.$children[0].showOk()  //索引为0的子组件的方法 在父级方法中使用 
+						}
+					}
+				})
+	      
 </script>
 
 ```
 
 
 
-## 自定义组件的`v-model` 双向绑定
+# $refs
 
-> 2.2.0+ 新增
+- **预期**：`string`
 
-### V-model 语法糖
+  `ref` 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 `$refs` 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例：
 
-v-model实现了表单输入的双向绑定
+  ```html
+  <!-- `vm.$refs.p` will be the DOM node -->
+  <p ref="p">hello</p>
+  
+  <!-- `vm.$refs.child` will be the child component instance -->
+  <child-component ref="child"></child-component>
+  ```
 
-```HTML
+  当 `v-for` 用于元素或组件的时候，引用信息将是包含 DOM 节点或组件实例的数组。
 
- <div id="app">
-     <input v-model="price">
- </div>
+  关于 ref 注册时间的重要说明：因为 ref 本身是作为渲染结果被创建的，在初始渲染的时候你不能访问它们 - 它们还不存在！`$refs` 也不是响应式的，因此你不应该试图用它在模板中做数据绑定。
 
+- **参考**：[子组件引用](https://cn.vuejs.org/v2/guide/components-edge-cases.html#访问子组件实例或子元素)
+
+
+
+### [访问子组件实例或子元素](https://cn.vuejs.org/v2/guide/components-edge-cases.html#访问子组件实例或子元素)
+
+尽管存在 prop 和事件，有的时候你仍可能需要在 JavaScript 里直接访问一个子组件。为了达到这个目的，你可以通过 `ref` 这个 attribute 为子组件赋予一个 ID 引用。例如：
+
+```htmk
+<base-input ref="usernameInput"></base-input>
 ```
+
+现在在你已经定义了这个 `ref` 的组件里，你可以使用：
 
 ```js
-
- new Vue({
-     el: '#app',
-     data: {
-          price: ''
-     }
- });
-
+this.$refs.usernameInput
 ```
-通过该语句实现price变量与输入值双向绑定,实际上v-model只是一个语法糖，真正的实现是这样的：
+
+来访问这个 `` 实例，以便不时之需。比如程序化地从一个父级组件聚焦这个输入框。在刚才那个例子中，该 `` 组件也可以使用一个类似的 `ref` 提供对内部这个指定元素的访问，例如：
 
 ```html
-
-<input type="text" 
-　　　　　　:value="price" 
-　　　　　　@input="price=$event.target.value">
-
+<input ref="input">
 ```
 
-以上代码分几个步骤：
-
-1. 将输入框的值绑定到price变量上，这个是单向绑定，意味着改变price变量的值可以改变input的value，但是改变value不能改变price
-2. 监听input事件（input输入框都有该事件，当输入内容时自动触发该事件），当输入框输入内容就单向改变price的值
-   
-这样就实现了双向绑定。
-
-### 父子组件中的双向绑定
-
-```HTML
-
-<div id="app"> 
-    <!-- <price-input v-model="price"></price-input> -->
-
-     <!-- 手动实现了v-model双向绑定 -->
-     <!-- 3、父组件的input事件被触发，将传来的值赋给父组件的变量price -->
-     <!-- 4、父组件value的值绑定到price -->
-     <price-input :value="price" @input="onInput"></price-input>
-     <p>{{price}}</p>
-</div>
-
-```
+甚至可以通过其父级组件定义方法：
 
 ```js
-
-Vue.component('price-input', {
-     // 5、将父组件的value值通过props传递给子组件
-     // 1、当有数据输入时触发了该组件的input事件
-     template: '<input :value="value" @input="updateVal($event.target.value)" type="text">',
-     props: ["value"], 
-     methods: {
-          updateVal: function(val) {
-             // 2、手动触发父组件的input事件并将值传给父组件
-             this.$emit('input', val);  
-          }
-      }
- });
- var app = new Vue({
-      el: '#app',
-      data: {
-          price: ''
-      },
-      methods: {
-           onInput: function(val) {
-                this.price = val;
-           }
-       }
-  });
-
+methods: {
+  // 用来从父级组件聚焦输入框
+  focus: function () {
+    this.$refs.input.focus()
+  }
+}
 ```
 
-- 当有数据输入时触发了该组件的input事件
-- 手动触发父组件的input事件并将值传给父组件
-- 父组件的input事件被触发，将传来的值赋给父组件的变量price，实现输入框value到父元素的price的单向绑定
-- 父组件value的值绑定到price 
-- 将父组件的value值通过props传递给子组件，实现了父组件的price到子组件value的单向绑定
+这样就允许父级组件通过下面的代码聚焦 `` 里的输入框：
 
-#### 案例
+```js
+this.$refs.usernameInput.focus()
+```
+
+当 `ref` 和 `v-for` 一起使用的时候，你得到的引用将会是一个包含了对应数据源的这些子组件的数组。
+
+`$refs` 只会在组件渲染完成之后生效，并且它们不是响应式的。这仅作为一个用于直接操作子组件的“逃生舱”——你应该避免在模板或计算属性中访问 `$refs`。
+
 
 ```HTML
 
-<div id="app">
-  <h2>data:{{num}}</h2>
-  <cpn1 :cpnum="num" @numchange = 'numChange'></cpn1>
-</div>
 
-		
+	<div id="app">
+		<cpn1 :cp-name ="name" ref = 'a'></cpn1>
+		<button type="button" @click="btnClick">查看</button>
+	</div>
+
+
 <template id="myCpn">
 	<div>
-		<h2>props:{{cpnum}}</h2>
-		<h2>cpdata:{{dnum}}</h2>
-		<input :value ="dnum" @input="cpnInput"></input>
+		<h2>{{cpName}}</h2>
 	</div>
 </template>
 
@@ -203,70 +144,35 @@ Vue.component('price-input', {
 	const cpn1 = Vue.extend({
 					template:'#myCpn',
 					props:{
-						cpnum:Number
-					},
-					data(){
-						return{
-							dnum:this.cpnum
+						cpName:{
+							type:String,
 							}
 						},
 						methods:{
-							cpnInput(event){
-								this.dnum = event.target.value
-								this.$emit('numchange',this.dnum)
+							showOk(){
+								console.log('OK')
 							}
 						}
+
 				})
 				
 
-const app = new Vue({
-			el: '#app',
-			data: {
-				num:1
-			},
-			components:{
-				cpn1
-			},
-			methods:{
-				numChange(value){
-					this.num = parseFloat(value)
-				}
-			}
-		})
+	const app = new Vue({
+					el: '#app',
+					data: {
+						name:'Retr0'
+					},
+					components:{
+						cpn1
+					},
+					methods:{
+						btnClick(){
+              console.log(this.$refs.a.showOK()) //$refs 默认是对象类型
+							
+						}
+					}
+				})
 	      
 </script>
 
-
 ```
-
-
-一个组件上的 `v-model` 默认会利用名为 `value` 的 prop 和名为 `input` 的事件，但是像单选框、复选框等类型的输入控件可能会将 `value` attribute 用于[不同的目的](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#Value)。`model` 选项可以用来避免这样的冲突：
-
-```js
-Vue.component('base-checkbox', {
-  model: {
-    prop: 'checked',
-    event: 'change'
-  },
-  props: {
-    checked: Boolean
-  },
-  template: `
-    <input
-      type="checkbox"
-      v-bind:checked="checked"
-      v-on:change="$emit('change', $event.target.checked)"
-    >
-  `
-})
-```
-
-现在在这个组件上使用 `v-model` 的时候：
-
-```html
-<base-checkbox v-model="lovingVue"></base-checkbox>
-```
-
-这里的 `lovingVue` 的值将会传入这个名为 `checked` 的 prop。同时当 `base-checkbox` 触发一个 `change` 事件并附带一个新的值的时候，这个 `lovingVue` 的属性将会被更新。
-
-注意你仍然需要在组件的 `props` 选项里声明 `checked` 这个 prop。

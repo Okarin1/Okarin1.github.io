@@ -4,8 +4,7 @@ date: 2021-04-09
 categories:
  - Vue.js
 tags:
- - Vue.js 
- - Vue语法
+ - Vue指令
 ---
 
 

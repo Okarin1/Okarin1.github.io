@@ -4,7 +4,7 @@ date: 2021-02-07
 categories:
  - JavaScript
 tags:
- - JavaScript
+ - js内置对象
 ---
 <!-- more -->
 ## 内置对象

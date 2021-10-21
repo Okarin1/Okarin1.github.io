@@ -5,7 +5,8 @@ categories:
  - Vue.js
 tags:
  - Vue.js 
- - Vue语法
+ - Vue指令
+
 ---
 
 ## 动态绑定指令v-bind

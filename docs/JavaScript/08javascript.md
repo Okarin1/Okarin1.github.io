@@ -3,8 +3,7 @@ title: JavaScript 操作元素进阶案例
 date: 2021-02-09
 categories:
  - JavaScript
-tags:
- - JavaScript
+
 ---
 <!-- more -->
 ## 排他思想

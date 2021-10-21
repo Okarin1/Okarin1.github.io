@@ -57,7 +57,7 @@ Flex布局的伸缩容器可以使用任何方向进行布局。
 主轴的开始位置为主轴起点(main start)，主轴的结束位置为主轴终点(main end),而主轴的长度为主轴长度(main size)。
 同理侧轴的起点为侧轴起点(cross start),结束位置为侧轴终点(cross end),长度为侧轴长度(cross size)。
 
-![avatar](https://upload-images.jianshu.io/upload_images/22188-bbf58812dfcac77d.png?imageMogr2/auto-orient/strip%7CimageView2/2)
+![](https://upload-images.jianshu.io/upload_images/22188-bbf58812dfcac77d.png?imageMogr2/auto-orient/strip%7CimageView2/2)
 
 主轴并不是一定是从左到右的，同理侧轴也不一定是从上到下，主轴的方向使用flex-direction属性控制,它有4个可选值:
 
@@ -86,7 +86,7 @@ Flex布局的伸缩容器可以使用任何方向进行布局。
     </view>
 </view>
 ```
-![avatar](https://upload-images.jianshu.io/upload_images/22188-1bdb989fea46fdc1.png?imageMogr2/auto-orient/strip%7CimageView2/2)
+![](https://upload-images.jianshu.io/upload_images/22188-1bdb989fea46fdc1.png?imageMogr2/auto-orient/strip%7CimageView2/2)
 
 ***对齐方式***
 子元素有两种对齐方式：
@@ -102,7 +102,7 @@ justify-content有5个可选的对齐方式:
 * space-between 两端对齐，除了两端的子元素分别靠向两端的容器之外，其他子元素之间的间隔都相等
 * space-around 每个子元素之间的距离相等，两端的子元素距离容器的距离也和其它子元素之间的距离相同。
 justify-content的对齐方式和主轴的方向有关，下图以flex-direction为row，主轴方式是从左到右,描述jstify-content5个值的显示效果:
-![avatar](https://upload-images.jianshu.io/upload_images/22188-e843b222e9ae5244.png?imageMogr2/auto-orient/strip%7CimageView2/2)
+![](https://upload-images.jianshu.io/upload_images/22188-e843b222e9ae5244.png?imageMogr2/auto-orient/strip%7CimageView2/2)
 
 justify-content
 align-items表示侧轴上的对齐方式:
@@ -113,7 +113,7 @@ align-items表示侧轴上的对齐方式:
 * center 在侧轴中居中对齐
 * baseline 以子元素的第一行文字对齐
 align-tiems设置的对齐方式，和侧轴的方向有关，下图以flex-direction为row,侧轴方向是从上到下,描述align-items的5个值显示效果:
-![avatar](https://upload-images.jianshu.io/upload_images/22188-b9c64a339a543827.png?imageMogr2/auto-orient/strip%7CimageView2/2)
+![](https://upload-images.jianshu.io/upload_images/22188-b9c64a339a543827.png?imageMogr2/auto-orient/strip%7CimageView2/2)
 
 
 

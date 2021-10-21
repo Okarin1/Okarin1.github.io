@@ -4,8 +4,7 @@ date: 2021-04-01
 categories:
  - Vue.js
 tags:
- - Vue.js 
- - 虚拟DOM
+ - DOM
 ---
 
 **摘要：** 什么是虚拟DOM?

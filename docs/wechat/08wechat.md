@@ -5,7 +5,6 @@ categories:
  - 微信小程序
 tags:
  - 微信小程序 
- - app.js
 ---
 
 ## 学习日志

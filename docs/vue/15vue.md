@@ -1,326 +1,271 @@
 ---
-title: Vue.js 父组件和子组件通信
-date: 2021-04-14
+title: Vue.js 组件通信 子传父 双向绑定
+date: 2021-04-15
 categories:
  - Vue.js
 tags:
- - Vue.js 
- - Vue语法
+ - 组件通信
 ---
 
+# 自定义事件
 
-# 父传子 prop
+## 事件名
 
-## prop的大小写
-
-> HTML 中的 attribute 名是大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。这意味着当你使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名：
-
-```js
-Vue.component({'navbar'},{
-    template:`<div>{{myName}}</div>`,
-    props:['myName']
-})
-```
-
-```html
-<navbar my-name='hello'></navbar>
-```
-
-
-
-## prop类型
-
-
-### 字符串数组形式
+不同于组件和 prop，事件名不存在任何自动化的大小写转换。而是触发的事件名需要完全匹配监听这个事件所用的名称。举个例子，如果触发一个 camelCase 名字的事件：
 
 ```js
-props: ['title', 'likes', 'isPublished', 'commentIds', 'author']
+this.$emit('myEvent')
 ```
 
-#### 案例
+则监听这个名字的 kebab-case 版本是不会有任何效果的：
+
+```js
+<!-- 没有效果 -->
+<my-component v-on:my-event="doSomething"></my-component>
+```
+
+不同于组件和 prop，事件名不会被用作一个 JavaScript 变量名或属性名，所以就没有理由使用 camelCase 或 PascalCase 了。并且 `v-on` 事件监听器在 DOM 模板中会被自动转换为全小写 (因为 HTML 是大小写不敏感的)，所以 `v-on:myEvent` 将会变成 `v-on:myevent`——导致 `myEvent` 不可能被监听到。
+
+因此，我们推荐你**始终使用 kebab-case 的事件名**。
+
+
+### 案例
 
 ```HTML
 
-	<div id="app">
-		<cpn1 :mytitle="title" :myinfo = "info"></cpn1> 
-    <!-- 属性绑定 不然会识别为字符串 -->
+<div id="app">
+		<cpn1 :my-title="title" :my-info = "info" @item-click = "cpnClick"></cpn1> 
+    <!-- 使用kebab-case 的事件名 -->
+</div>
+
+		
+<template id="myCpn">
+	<div>
+		<h2>{{myTitle}}</h2>
+		<button v-for = "item in myInfo" @click="btnClick(item)">{{item.name}}</button> 
 	</div>
-		
-		<template id="myCpn">
-			<div>
-				<h2>{{mytitle}}</h2>
-				<li v-for = "item in myinfo">{{item}}</li>
-			</div>
-		</template>
-		<script src="vue.js"></script>
-		
-		
-		<script type="text/javascript">
-			const cpn1 = Vue.extend({
-							template:'#myCpn',
-							props:['mytitle','myinfo'] //注意props 数组中的字符串就是传递时的名称
-						})
-			
-			const app = new Vue({
-							el: '#app',
-							data: {
-									title:'OKarin',
-									info:['a','b','c']
-							      },
-							components:{
-								cpn1
-							}
-						})
-			      
-		</script>
+</template>
+<script src="vue.js"></script>
+
+
+<script type="text/javascript">
+	const cpn1 = Vue.extend({
+					template:'#myCpn',
+					props:['myTitle','myInfo'],
+					methods:{
+						btnClick(item){
+								this.$emit('item-click',item) //完全匹配监听这个事件所用的名称 与监听事件一致
+						}
+					}
+				})
+				
+
+const app = new Vue({
+			el: '#app',
+			data: {
+					title:'OKarin',
+					info:[
+						{id:'a',name:'手机'},
+					  {id:'b',name:'手表'},
+						{id:'c',name:'电脑'},
+						]
+			      },
+			components:{
+				cpn1
+			},
+			methods:{
+				cpnClick(item){
+					console.log(item.name) //打印名称
+				}
+			}
+		})
+     
+</script>
 
 ```
 
 
-### 对象形式
 
-但是，通常你希望每个 prop 都有指定的值类型。这时，你可以以对象形式列出 prop，这些属性的名称和值分别是 prop 各自的`名称`和`类型`：
+## 自定义组件的`v-model` 双向绑定
+
+> 2.2.0+ 新增
+
+### V-model 语法糖
+
+v-model实现了表单输入的双向绑定
+
+```HTML
+
+ <div id="app">
+     <input v-model="price">
+ </div>
+
+```
 
 ```js
-props: {
-  title: String,
-  likes: Number,
-  isPublished: Boolean,
-  commentIds: Array,
-  author: Object,
-  callback: Function,
-  contactsPromise: Promise // or any other constructor
-}
+
+ new Vue({
+     el: '#app',
+     data: {
+          price: ''
+     }
+ });
+
+```
+通过该语句实现price变量与输入值双向绑定,实际上v-model只是一个语法糖，真正的实现是这样的：
+
+```html
+
+<input type="text" 
+　　　　　　:value="price" 
+　　　　　　@input="price=$event.target.value">
+
 ```
 
-这不仅为你的组件提供了文档，还会在它们遇到错误的类型时从浏览器的 JavaScript 控制台提示用户。你会在这个页面接下来的部分看到[类型检查和其它 prop 验证](https://cn.vuejs.org/v2/guide/components-props.html#Prop-验证)。
+以上代码分几个步骤：
 
+1. 将输入框的值绑定到price变量上，这个是单向绑定，意味着改变price变量的值可以改变input的value，但是改变value不能改变price
+2. 监听input事件（input输入框都有该事件，当输入内容时自动触发该事件），当输入框输入内容就单向改变price的值
+   
+这样就实现了双向绑定。
+
+### 父子组件中的双向绑定
+
+```HTML
+
+<div id="app"> 
+    <!-- <price-input v-model="price"></price-input> -->
+
+     <!-- 手动实现了v-model双向绑定 -->
+     <!-- 3、父组件的input事件被触发，将传来的值赋给父组件的变量price -->
+     <!-- 4、父组件value的值绑定到price -->
+     <price-input :value="price" @input="onInput"></price-input>
+     <p>{{price}}</p>
+</div>
+
+```
+
+```js
+
+Vue.component('price-input', {
+     // 5、将父组件的value值通过props传递给子组件
+     // 1、当有数据输入时触发了该组件的input事件
+     template: '<input :value="value" @input="updateVal($event.target.value)" type="text">',
+     props: ["value"], 
+     methods: {
+          updateVal: function(val) {
+             // 2、手动触发父组件的input事件并将值传给父组件
+             this.$emit('input', val);  
+          }
+      }
+ });
+ var app = new Vue({
+      el: '#app',
+      data: {
+          price: ''
+      },
+      methods: {
+           onInput: function(val) {
+                this.price = val;
+           }
+       }
+  });
+
+```
+
+- 当有数据输入时触发了该组件的input事件
+- 手动触发父组件的input事件并将值传给父组件
+- 父组件的input事件被触发，将传来的值赋给父组件的变量price，实现输入框value到父元素的price的单向绑定
+- 父组件value的值绑定到price 
+- 将父组件的value值通过props传递给子组件，实现了父组件的price到子组件value的单向绑定
 
 #### 案例
 
 ```HTML
 
 <div id="app">
-		<cpn1 :my-title="title" :my-info = "info"></cpn1> 
-    <!-- 属性绑定 不然会识别为字符串 -->
+  <h2>data:{{num}}</h2>
+  <cpn1 :cpnum="num" @numchange = 'numChange'></cpn1>
+</div>
+
+		
+<template id="myCpn">
+	<div>
+		<h2>props:{{cpnum}}</h2>
+		<h2>cpdata:{{dnum}}</h2>
+		<input :value ="dnum" @input="cpnInput"></input>
 	</div>
-		
-		<template id="myCpn">
-			<div>
-				<h2>{{myTitle}}</h2>
-				<li v-for = "item in myInfo">{{item}}</li>
-			</div>
-		</template>
-		<script src="vue.js"></script>
-		
-		
-		<script type="text/javascript">
-			const cpn1 = Vue.extend({
-							template:'#myCpn',
-							props:{              //对象类型
-                //myTitle:String,
-                myTitle:{
-                  type:String,
-                  dafult:'Retr0'//对象类型 可以进行限制 
-                  required:true //必须传入这个属性，不然就会报错
-                }
-                myInfo:{
-                  type:Array,
-                  default(){
-                    return[]  //当类型是对象或者数组时，默认值必须是一个函数
-                  }
-                  required:true  
-                },
-              }
-						})
-			
-			const app = new Vue({
-							el: '#app',
-							data: {
-									title:'OKarin',
-									info:['a','b','c']
-							      },
-							components:{
-								cpn1
+</template>
+
+<script src="vue.js"></script>
+<script type="text/javascript">
+	const cpn1 = Vue.extend({
+					template:'#myCpn',
+					props:{
+						cpnum:Number
+					},
+					data(){
+						return{
+							dnum:this.cpnum
 							}
-						})
-			      
-		</script>
+						},
+						methods:{
+							cpnInput(event){
+								this.dnum = event.target.value
+								this.$emit('numchange',this.dnum)
+							}
+						}
+				})
+				
+
+const app = new Vue({
+			el: '#app',
+			data: {
+				num:1
+			},
+			components:{
+				cpn1
+			},
+			methods:{
+				numChange(value){
+					this.num = parseFloat(value)
+				}
+			}
+		})
+	      
+</script>
+
 
 ```
 
 
-
-
-
-## 传递静态或动态prop
-
-### 静态
-
-可以像这样给 prop 传入一个静态的值，即传入了一个'hello'的字符串
+一个组件上的 `v-model` 默认会利用名为 `value` 的 prop 和名为 `input` 的事件，但是像单选框、复选框等类型的输入控件可能会将 `value` attribute 用于[不同的目的](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#Value)。`model` 选项可以用来避免这样的冲突：
 
 ```js
-Vue.component('navbar',{
-    template:`<div>{{myname}}</div>`,
-    props:['myname']
-})
-```
-
-```html
-<navbar myname='hello'></navbar>
-```
-
-
-
-### 动态
-
-#### 传入一个布尔值
-
-```js
-Vue.component('navbar',{
-    template:`<div v-if='isshow'>动态显示和隐藏</div>`,
-    props:{
-        isshow:Boolean
-    }
-})
-```
-
-```html
-<navbar :isshow='false'></navbar> //传入的是一个false布尔值
-```
-
-
-
-#### 传入一个状态
-
-```js
-Vue.component('navar',{
-    template:`<div v-if='data'>动态传入状态</div>`,
-    props:{
-        data:Boolean
-    }
-})
-new Vue({
-    el:'#box',
-    data:{
-        isshow:false
-    }
-})
-```
-
-```js
-<button @click='isshow=!isshow'>click</button>
-<navbar :data='isshow'></navbar> //通过data属性传入一个父组件中一个叫isshow的状态
-```
-
-
-
-#### 传入一个数字
-
-```HTML
-<!-- 即便 `42` 是静态的，我们仍然需要 `v-bind` 来告诉 Vue -->
-<!-- 这是一个 JavaScript 表达式而不是一个字符串。-->
-<blog-post v-bind:likes="42"></blog-post>
-
-<!-- 用一个变量进行动态赋值。-->
-<blog-post v-bind:likes="post.likes"></blog-post>
-```
-
-
-
-#### 传入一个对象
-
-```HTML
-<!-- 即便对象是静态的，我们仍然需要 `v-bind` 来告诉 Vue -->
-<!-- 这是一个 JavaScript 表达式而不是一个字符串。-->
-<blog-post
-  v-bind:author="{
-    name: 'Veronica',
-    company: 'Veridian Dynamics'
-  }"
-></blog-post>
-
-<!-- 用一个变量进行动态赋值。-->
-<blog-post v-bind:author="post.author"></blog-post>
-```
-
-
-
-
-## prop验证
-
-所有的 prop 都使得其父子 prop 之间形成了一个**单向下行绑定**：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。
-
-额外的，每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你**不**应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。
-
-这里有两种常见的试图改变一个 prop 的情形：
-
-1. **这个 prop 用来传递一个初始值；这个子组件接下来希望将其作为一个本地的 prop 数据来使用。**在这种情况下，最好定义一个本地的 data 属性并将这个 prop 用作其初始值：
-
-   ```
-   props: ['initialCounter'],
-   data: function () {
-     return {
-       counter: this.initialCounter
-     }
-   }
-   ```
-
-2. **这个 prop 以一种原始的值传入且需要进行转换。**在这种情况下，最好使用这个 prop 的值来定义一个计算属性：
-
-   ```
-   props: ['size'],
-   computed: {
-     normalizedSize: function () {
-       return this.size.trim().toLowerCase()
-     }
-   }
-   ```
-
-注意在 JavaScript 中对象和数组是通过引用传入的，所以对于一个数组或对象类型的 prop 来说，在子组件中改变这个对象或数组本身**将会**影响到父组件的状态。
-
-## Prop 验证
-
-我们可以为组件的 prop 指定验证要求，例如你知道的这些类型。如果有一个需求没有被满足，则 Vue 会在浏览器控制台中警告你。这在开发一个会被别人用到的组件时尤其有帮助。
-
-为了定制 prop 的验证方式，你可以为 `props` 中的值提供一个带有验证需求的对象，而不是一个字符串数组。例如：
-
-```js
-Vue.component('my-component', {
+Vue.component('base-checkbox', {
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
   props: {
-    // 基础的类型检查 (`null` 和 `undefined` 会通过任何类型验证)
-    propA: Number,
-    // 多个可能的类型
-    propB: [String, Number],
-    // 必填的字符串
-    propC: {
-      type: String,
-      required: true
-    },
-    // 带有默认值的数字
-    propD: {
-      type: Number,
-      default: 100
-    },
-    // 带有默认值的对象
-    propE: {
-      type: Object,//Array
-      // 对象或数组默认值必须从一个工厂函数获取 不然会报错
-      default: function () {
-        return { message: 'hello' }
-      }
-    },
-    // 自定义验证函数
-    propF: {
-      validator: function (value) {
-        // 这个值必须匹配下列字符串中的一个
-        return ['success', 'warning', 'danger'].indexOf(value) !== -1
-      }
-    }
-  }
+    checked: Boolean
+  },
+  template: `
+    <input
+      type="checkbox"
+      v-bind:checked="checked"
+      v-on:change="$emit('change', $event.target.checked)"
+    >
+  `
 })
 ```
 
-当 prop 验证失败的时候，(开发环境构建版本的) Vue 将会产生一个控制台的警告。
+现在在这个组件上使用 `v-model` 的时候：
 
-注意那些 prop 会在一个组件实例创建**之前**进行验证，所以实例的属性 (如 `data`、`computed` 等) 在 `default` 或 `validator` 函数中是不可用的。
+```html
+<base-checkbox v-model="lovingVue"></base-checkbox>
+```
+
+这里的 `lovingVue` 的值将会传入这个名为 `checked` 的 prop。同时当 `base-checkbox` 触发一个 `change` 事件并附带一个新的值的时候，这个 `lovingVue` 的属性将会被更新。
+
+注意你仍然需要在组件的 `props` 选项里声明 `checked` 这个 prop。

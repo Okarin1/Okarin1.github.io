@@ -7,7 +7,7 @@ sticky: 1
 :::tip
 🌱 正在学习 Vue.js, JavaScript, TypeScript
 
-👨‍💻 我的项目地址 [oakrin1](https://github.com/oakrin1)
+👨‍💻 我的项目地址 [okarin1](https://github.com/okarin1)
 :::
 
 <!-- more -->

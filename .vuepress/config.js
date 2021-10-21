@@ -135,14 +135,7 @@ module.exports = {
         "21vue",
         "22vue",
         "23vue",
-        "24vue",
-        "25vue",
-        "26vue",
-        "27vue",
-        "28vue",
-        "29vue",
-        "30vue",
-        "31vue"
+        "24vue"
       ],
       "/docs/JavaScript/": [
         "",

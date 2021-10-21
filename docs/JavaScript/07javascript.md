@@ -4,7 +4,7 @@ date: 2021-02-08
 categories:
  - JavaScript
 tags:
- - JavaScript
+ - DOM
 ---
 <!-- more -->
  ## Web API 

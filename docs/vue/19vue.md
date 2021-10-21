@@ -1,6 +1,6 @@
 ---
-title: Vue.js .sync和update
-date: 2021-04-18
+title: Vue.js 过渡效果
+date: 2021-04-23
 categories:
  - Vue.js
 tags:
@@ -8,85 +8,278 @@ tags:
  - Vue语法
 ---
 
-# 属性可不可以修改
+# 进入/离开 & 列表过渡
 
-严格来说,Vue子组件不能随便更改父组件传递过来的属性,但是可以通过props 配合 $emit 改变父组件传入的值
+## 概述
 
-//父组件<my-input :warning.sync="warning" />
+Vue 在插入、更新或者移除 DOM 时，提供多种不同方式的应用过渡效果。
+包括以下工具：
 
-在父组件传入值时，需要有xxx.sync修饰符；
+- 在 CSS 过渡和动画中自动应用 class
+- 可以配合使用第三方 CSS 动画库，如 Animate.css
+- 在过渡钩子函数中使用 JavaScript 直接操作 DOM
+- 可以配合使用第三方 JavaScript 动画库，如 Velocity.js
 
-//子组件$emit('update:warning',val)
 
-子组件可以在$emit('update:xxxx',val)，派发事件修改传入的值
 
-> 2.3.0+ 新增
+## 单元素/组件的过渡
 
-在有些情况下，我们可能需要对一个 prop 进行“双向绑定”。不幸的是，真正的双向绑定会带来维护上的问题，因为子组件可以修改父组件，且在父组件和子组件都没有明显的改动来源。
+Vue 提供了 `transition` 的封装组件，在下列情形中，可以给任何元素和组件添加进入/离开过渡
 
-这也是为什么我们推荐以 `update:myPropName` 的模式触发事件取而代之。举个例子，在一个包含 `title` prop 的假设的组件中，我们可以用以下方法表达对其赋新值的意图：
+- 条件渲染 (使用 `v-if`)
+- 条件展示 (使用 `v-show`)
+- 动态组件
+- 组件根节点
+
+这里是一个典型的例子：
+
+```html
+<div id="demo">
+    <button v-on:click="show = !show">
+        Toggle
+    </button>
+    <transition name="fade">
+        <p v-if="show">hello</p>
+    </transition>
+</div>
+```
+
+
 
 ```js
-this.$emit('update:title', newTitle)
+new Vue({
+  el: '#demo',
+  data: {
+    show: true
+  }
+})
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 ```
 
-然后父组件可以监听那个事件并根据需要更新一个本地的数据属性。例如：
+
+
+当插入或删除包含在 `transition` 组件中的元素时，Vue 将会做以下处理：
+
+1. 自动嗅探目标元素是否应用了 CSS 过渡或动画，如果是，在恰当的时机添加/删除 CSS 类名。
+2. 如果过渡组件提供了 [JavaScript 钩子函数](https://cn.vuejs.org/v2/guide/transitions.html#JavaScript-钩子)，这些钩子函数将在恰当的时机被调用。
+3. 如果没有找到 JavaScript 钩子并且也没有检测到 CSS 过渡/动画，DOM 操作 (插入/删除) 在下一帧中立即执行。(注意：此指浏览器逐帧动画机制，和 Vue 的 `nextTick` 概念不同)
+
+### 过渡的类名
+
+在进入/离开的过渡中，会有 6 个 class 切换。
+
+1. `v-enter`：定义进入过渡的开始状态。在元素被插入之前生效，在元素被插入之后的下一帧移除。
+2. `v-enter-active`：定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数。
+3. `v-enter-to`: **2.1.8版及以上** 定义进入过渡的结束状态。在元素被插入之后下一帧生效 (与此同时 `v-enter` 被移除)，在过渡/动画完成之后移除。
+4. `v-leave`: 定义离开过渡的开始状态。在离开过渡被触发时立刻生效，下一帧被移除。
+5. `v-leave-active`：定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。
+6. `v-leave-to`: **2.1.8版及以上** 定义离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 `v-leave` 被删除)，在过渡/动画完成之后移除。
+
+![Transition Diagram](https://cn.vuejs.org/images/transition.png)
+
+对于这些在过渡中切换的类名来说，如果你使用一个没有名字的 ``，则 `v-` 是这些类名的默认前缀。如果你使用了 ``，那么 `v-enter` 会替换为 `my-transition-enter`。
+
+`v-enter-active` 和 `v-leave-active` 可以控制进入/离开过渡的不同的缓和曲线，在下面章节会有个示例说明。
+
+
+
+### 初始化渲染页面时过渡
+
+需要利用apper属性
 
 ```html
-<text-document
-  v-bind:title="doc.title"
-  v-on:update:title="doc.title = $event"
-></text-document>
+<transition name='retr0' appear>
+    <div v-if='isshow' style='background:red;'>
+        show
+    </div>
+</transition>
 ```
 
-为了方便起见，我们为这种模式提供一个缩写，即 `.sync` 修饰符：
+
+
+### 自定义过渡类名
+
+我们可以通过以下 attribute 来自定义过渡类名：
+
+- `enter-class`
+- `enter-active-class`
+- `enter-to-class` (2.1.8+)
+- `leave-class`
+- `leave-active-class`
+- `leave-to-class` (2.1.8+)
 
 ```html
-<text-document v-bind:title.sync="doc.title"></text-document>
+<transition enter-active-class='animated bounceInRight' leave-active-class='animated bounceOutRight' appear>
+    <div v-if='isshow'>动画</div>
+</transition>
 ```
 
-注意带有 `.sync` 修饰符的 `v-bind` **不能**和表达式一起使用 (例如 `v-bind:title.sync=”doc.title + ‘!’”` 是无效的)。取而代之的是，你只能提供你想要绑定的属性名，类似 `v-model`。
 
-当我们用一个对象同时设置多个 prop 的时候，也可以将这个 `.sync` 修饰符和 `v-bind` 配合使用：
+
+### 过渡模式
+
+- `in-out`：新元素先进行过渡，完成之后当前元素过渡离开。
+- `out-in`：当前元素先进行过渡，完成之后新元素过渡进入。
 
 ```html
-<text-document v-bind.sync="doc"></text-document>
+<transition enter-active-class='animated bounceInRight' leave-active-class='animated bounceOutRight' appear mode-'out-in'>
+    <div v-if='isshow'>动画一</div>
+    <div v-else>动画一</div>
+</transition>
 ```
 
-这样会把 `doc` 对象中的每一个属性 (如 `title`) 都作为一个独立的 prop 传进去，然后各自添加用于更新的 `v-on` 监听器。
 
-将 `v-bind.sync` 用在一个字面量的对象上，例如 `v-bind.sync=”{ title: doc.title }”`，是无法正常工作的，因为在解析一个像这样的复杂表达式的时候，有很多边缘情况需要考虑。
 
-## 实例
+## 多个组件的过渡
+
+多个组件的过渡简单很多 - 我们不需要使用 `key` attribute。相反，我们只需要使用[动态组件](https://cn.vuejs.org/v2/guide/components.html#动态组件)：
 
 ```html
-<div id="box">
-    <child :title.sync='mytitle'></child>
-    <br>
-    {{mytitle}}
+<transition name="component-fade" mode="out-in">
+  <component v-bind:is="view"></component>
+</transition>
+```
+
+```css
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+}
+```
+
+```js
+
+new Vue({
+  el: '#transition-components-demo',
+  data: {
+    view: 'v-a'
+  },
+  components: {
+    'v-a': {
+      template: '<div>Component A</div>'
+    },
+    'v-b': {
+      template: '<div>Component B</div>'
+    }
+  }
+})
+
+```
+
+
+
+## 列表过渡
+
+目前为止，关于过渡我们已经讲到：
+
+- 单个节点
+- 同一时间渲染多个节点中的一个
+
+那么怎么同时渲染整个列表，比如使用 `v-for` ？在这种场景中，使用 `` 组件。在我们深入例子之前，先了解关于这个组件的几个特点：
+
+- 不同于 ``，它会以一个真实元素呈现：默认为一个 ``。你也可以通过 `tag` attribute 更换为其他元素。
+- [过渡模式](https://cn.vuejs.org/v2/guide/transitions.html#过渡模式)不可用，因为我们不再相互切换特有的元素。
+- 内部元素 **总是需要** 提供唯一的 `key` 属性值。
+- CSS 过渡的类将会应用在内部的元素中，而不是这个组/容器本身。
+
+### 列表的进入/离开过渡
+
+现在让我们由一个简单的例子深入，进入和离开的过渡使用之前一样的 CSS 类名。
+
+```html
+<div id="list-demo" class="demo">
+    <button v-on:click="add">Add</button>
+    <button v-on:click="remove">Remove</button>
+    <transition-group name="list" tag="p">
+        <span v-for="item in items" v-bind:key="item" class="list-item">
+            {{ item }}
+        </span>
+    </transition-group>
 </div>
 ```
 
 ```js
-Vue.component('child', {
-    template: `
-            <div>
-            	child---{{title}} -- 
-            	<button @click='change'>click</button>
-            </div>
-`,
-    props: ['title'],
+new Vue({
+    el: '#list-demo',
+    data: {
+        items: [1,2,3,4,5,6,7,8,9],
+        nextNum: 10
+    },
     methods: {
-        change() {
-            this.$emit('update:title', this.title + 1)
-        }
+        randomIndex: function () {
+            return Math.floor(Math.random() * this.items.length)
+        },
+        add: function () {
+            this.items.splice(this.randomIndex(), 0, this.nextNum++)
+        },
+        remove: function () {
+            this.items.splice(this.randomIndex(), 1)
+        },
     }
 })
-new Vue({
-    el: '#box',
-    data: {
-        mytitle: 11111
+```
+
+
+
+## 可复用的过渡
+
+过渡可以通过 Vue 的组件系统实现复用。要创建一个可复用过渡组件，你需要做的就是将 `` 或者 `` 作为根组件，然后将任何子组件放置在其中就可以了。
+
+使用 template 的简单例子：
+
+```js
+Vue.component('my-special-transition', {
+  template: '\
+    <transition\
+      name="very-special-transition"\
+      mode="out-in"\
+      v-on:before-enter="beforeEnter"\
+      v-on:after-enter="afterEnter"\
+    >\
+      <slot></slot>\
+    </transition>\
+  ',
+  methods: {
+    beforeEnter: function (el) {
+      // ...
+    },
+    afterEnter: function (el) {
+      // ...
     }
+  }
+})
+```
+
+[函数式组件](https://cn.vuejs.org/v2/guide/render-function.html#函数式组件)更适合完成这个任务：
+
+```js
+Vue.component('my-special-transition', {
+  functional: true,
+  render: function (createElement, context) {
+    var data = {
+      props: {
+        name: 'very-special-transition',
+        mode: 'out-in'
+      },
+      on: {
+        beforeEnter: function (el) {
+          // ...
+        },
+        afterEnter: function (el) {
+          // ...
+        }
+      }
+    }
+    return createElement('transition', data, context.children)
+  }
 })
 ```
 
