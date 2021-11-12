@@ -2,10 +2,8 @@
 title: Better-Scorll的基本使用
 date: 2021-10-13
 sidebar: 'auto'
-categories:
- - blog
 tags:
- - Python 
+ - Better-Scorll
 ---
 
 <!-- more -->
@@ -150,5 +148,34 @@ let bscroll = BetterScroll.createBScroll(document.querySelector('.wrapper'), {
 		        },2000)
 		    })
 ```
+### 解决图片重新计算滑动无效
 
+#### observe-dom
 
+开启对 content 以及 content 子元素 DOM 改变的探测。当插件被使用后，当这些 DOM 元素发生变化时，将会触发 scroll 的 refresh 方法。
+
+```js
+  import BScroll from '@better-scroll/core'
+  import ObserveDOM from '@better-scroll/observe-dom'
+  BScroll.use(ObserveDOM)
+
+  new BScroll('.bs-wrapper', {
+    //...
+    observeDOM: true // 开启 observe-dom 插件
+  })
+```
+
+#### observe-image
+
+开启对 wrapper 子元素中图片元素的加载的探测。无论图片的加载成功与否，都会自动调用 BetterScroll 的 refresh 方法来重新计算可滚动的宽度或者高度,对于已经用 CSS 确定图片宽高的场景，不应该使用该插件，因为每次调用 refresh 对性能会有影响。只有在图片的宽度或者高度不确定的情况下，你才需要它。
+
+```js
+ import BScroll from '@better-scroll/core'
+ import ObserveImage from '@better-scroll/observe-image'
+  BScroll.use(ObserveImage)
+
+  new BScroll('.bs-wrapper', {
+    //...
+    observeImage: true // 开启 observe-image 插件
+  })
+```

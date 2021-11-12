@@ -63,6 +63,7 @@ let vm = new Vue({
 ## 常见修饰符
 * .stop：等同于JavaScript中的event.stopPropagation()，防止事件冒泡
 * .prevent：等同于JavaScript中的event.preventDefault()，防止执行预设的行为（如果事件可取消,则取消该事件，而不停止事件的进一步传播）
+* .native: 监听组件根元素的原生事件
 * .capture：与事件冒泡的方向相反，事件捕获由外到内
 * .self：只会触发自己范围内的事件，不包含子元素
 * .once：只会触发一次
