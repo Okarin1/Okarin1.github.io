@@ -1,5 +1,5 @@
 ---
-title: Vue.js v-model双向绑定 和 计算属性
+title: Vue.js v-model 双向绑定 和 计算属性
 date: 2021-04-09
 categories:
  - Vue.js
