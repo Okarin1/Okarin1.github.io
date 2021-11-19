@@ -13,6 +13,7 @@ tagline: 世界上并没有完美的程序，但我们并不因此而沮丧
 bgImageStyle: {
   height: '450px'
 }
+
 isShowTitleInHome: false
 actionText: Guide
 actionLink: /views/other/guide
