@@ -24,7 +24,7 @@
 <script>
 
 export default {
-  name: "NavLinks",
+  name: "WebLinks",
   props:{
     navbars:{
         type:String,
@@ -73,7 +73,7 @@ export default {
             {
               text: 'wallhaven 壁纸',
               url: 'https://wallhaven.cc/',
-              icon: 'https://favicon.cccyun.cc/wallhaven.cc'
+              icon: 'http://favicon.cccyun.cc/wallhaven.cc'
             },
             
             {
@@ -129,7 +129,7 @@ export default {
             {
               text: 'beatstage 音游',
               url: 'https://www.beatstage.com/',
-              icon:'https://favicon.cccyun.cc/beatstage.com'
+              icon:'https://www.beatstage.com/favicon.ico'
             },
             {
               text: 'TouchPianist',
@@ -230,6 +230,11 @@ export default {
               text: 'IconPark',
               url: 'https://iconpark.oceanengine.com/',
               icon: 'https://lf1-cdn2-tos.bytegoofy.com/bydesign/iconparksite/logo.svg'
+            },
+            {
+              text: 'Font Awesome 中文网',
+              url: 'http://www.fontawesome.com.cn/faicons/',
+              icon: 'https://fontawesome.com/favicon.ico'
             },
             {
               text: 'Free Mesh Gradient',
@@ -386,6 +391,11 @@ export default {
               url: 'https://animate.style/',
             },
             {
+              text: 'Font Awesome Animation',
+              url: 'https://l-lin.github.io/font-awesome-animation/',
+              icon: 'https://fontawesome.com/favicon.ico'
+            },
+            {
               text: 'Image Effects with CSS',
               url: 'https://bennettfeely.com/image-effects/',
               icon: 'https://bennettfeely.com/image-effects/img/favicon-16x16.png'
@@ -398,6 +408,7 @@ export default {
               text:'SASS to CSS',
               url:'https://www.sassmeister.com/'
             }
+
           ]
         },
         {
@@ -543,7 +554,7 @@ html .links > li > a {
   background: #fffffc;
 }
 html .links > li > a:hover {
-  color: #03af90;
+  color: #3eaf7c;
   text-decoration: none;
 }
 

@@ -5,7 +5,7 @@ sidebar: 'auto'
 categories:
  - JavaScript
 tags:
- - formatDate
+ - JavaScript
 ---
 
 # 时间格式化

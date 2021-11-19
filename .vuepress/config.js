@@ -4,10 +4,10 @@ module.exports = {
       lang: 'zh-CN'
     }
   },
-  "title": "送报少年",
-  "description": "EL PSY CONGROO!",
+  title: "送报少年",
+  description: "EL PSY CONGROO!",
   
-  "head": [
+  head: [
     [
       "link",
       {
@@ -24,16 +24,32 @@ module.exports = {
     ]
   ],
 
-  "markdown": {
+  markdown: {
     "lineNumbers": true
   }
+
   ,
-  "theme": "reco",
+  theme: "reco",
   
 
+  //themeConfig
 
-  "themeConfig": {
-    "nav": [
+  themeConfig: {
+
+    type: "blog",
+    logo: "/logo.png",
+    search: true,
+    searchMaxSuggestions: 10,
+    lastUpdated: "Last Updated",
+    author: "Okarin",
+    authorAvatar: "/avatar.png",
+    record: "蜀ICP备20013490号-1",
+    recordLink: 'http://beian.miit.gov.cn/',
+    startYear: "2020",
+
+
+    //导航栏
+    nav: [
       {"text": "主页","link": "/","icon": "reco-home"},
       {"text": "时间线","link": "/timeline/","icon": "reco-date"},
       {"text": "文档","icon": "reco-message","items": [
@@ -53,50 +69,39 @@ module.exports = {
 
         ]
       },
+
       {"text": "导航","icon": "reco-menu","link": "/blogs/web/"},
     ],
 
-
-    "type": "blog",
-
     
-    "blogConfig": {
-      "category": {
+    // blogConfig
+    
+    blogConfig: {
+
+      category: {
         "location": 2,
         "text": "分类"
       },
-      "tag": {
+      tag: {
         "location": 3,
         "text": "标签"
       },
-      "socialLinks": [     // 信息栏展示社交信息
+
+      socialLinks: [     // 信息栏展示社交信息
         { icon: 'reco-github', link: 'https://github.com/Okarin1' },
         { icon: 'reco-qq', link: 'http://wpa.qq.com/msgrd?v=3&uin=201747922&site=qq&menu=yes' },
         { icon: 'reco-mail', link: 'mailto:okarin1024@163.com' },
         { icon: 'reco-zhihu', link: 'https://www.zhihu.com/people/qing-qi-gu-jiu-8' },
         { icon: 'reco-weibo', link: 'https://weibo.com/u/6331216566' },
         { icon: 'reco-bilibili', link: 'https://space.bilibili.com/23812673' },
-      ]
+      ],
     },
-
-    "logo": "/logo.png",
-    "search": true,
-    "searchMaxSuggestions": 10,
-    "lastUpdated": "Last Updated",
-    "author": "Okarin",
-    "authorAvatar": "/avatar.png",
-    "record": "蜀ICP备20013490号-1",
-    "recordLink": 'http://beian.miit.gov.cn/',
-    "startYear": "2020",
-
-
-    /**
-       * 密钥 (if your blog is private)
-      */
-
     
+
+
+    // 侧边栏
     subSidebar: 'auto' ,//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
-    "sidebar": {
+    sidebar: {
       "/docs/wechat/": [
         "",
         "01wechat",
@@ -177,8 +182,7 @@ module.exports = {
         logo: "https://www.lookroot.cn/logo.png",
         link: 'https://www.lookroot.cn/'
       },
-    ],
-  },
+    ]
 
-
+  }
 }
