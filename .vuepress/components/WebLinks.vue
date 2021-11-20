@@ -102,7 +102,7 @@ export default {
             {
               text: '全历史',
               url: 'https://www.allhistory.com/',
-              icon:'http://favicon.cccyun.cc/https://www.allhistory.com/',
+              icon:'https://static.allhistory.com/online/common/img/logo-ah.1598.svg',
               desc:'知识地图制作分享平台，它将地图和文字结合，反映中国历史、军事、地理、文化等方面的知识'
             },
             {
@@ -138,7 +138,7 @@ export default {
             {
               text: 'DeepL 翻译',
               url: 'https://www.deepl.com/',
-              icon: 'http://favicon.cccyun.cc/www.deepl.com',
+              icon: 'https://static.deepl.com/img/logo/DeepL_Logo_darkBlue_v2.svg',
               desc:'更地道的翻译'
             },
             {
@@ -167,7 +167,7 @@ export default {
             {
               text: 'crazygames',
               url: 'https://www.crazygames.com/',
-              icon: 'http://favicon.cccyun.cc/https://www.crazygames.com/',
+              icon: 'https://images.crazygames.com/favicons/android-icon-96x96.png',
               desc: '在线游戏网站'
             },
             {
@@ -178,7 +178,7 @@ export default {
             {
               text: 'Yikm',
               url: 'http://www.yikm.net',
-              icon: 'http://favicon.cccyun.cc/http://www.yikm.net/',
+              icon: 'https://mrcuya.gitee.io/yikmresource/menu/fc.png',
               desc: '复古游戏网站'
             },
             {
@@ -390,7 +390,7 @@ export default {
             {
               text: '油画转换',
               url: 'https://fotosketcher.com/',
-              icon:'http://favicon.cccyun.cc/https://fotosketcher.com',
+              icon:'https://i.loli.net/2021/11/21/6sD2CYSL4ahHZIg.png',
               desc:'用你的数码照片创造美丽的艺术作品'
             },
 
@@ -426,7 +426,7 @@ export default {
             {
               text: 'alltoall 格式转换',
               url: 'https://www.alltoall.net/',
-              icon: 'http://favicon.cccyun.cc/www.alltoall.net/',
+              icon: 'https://www.alltoall.net/qfy-content/uploads/2016/06/fa70f63e4bbcc259632aae74746ce5d6.png',
             },
 
             {
@@ -437,7 +437,7 @@ export default {
             {
               text: 'AirPortal 空投',
               url: 'https://airportal.cn/',
-              icon:'http://favicon.cccyun.cc/airportal.cn',
+              icon:'https://cdn.jsdelivr.net/gh/shangzhenyang/assets/img/ap-icon-512-2.png',
               desc:'只要您的设备联网，您就可以通过它在任意系统、任意设备间传输文件'
               
             },
@@ -548,7 +548,7 @@ export default {
             {
               text: 'Day.js',
               url: 'https://dayjs.fenxianglu.cn/',
-              icon:'http://favicon.cccyun.cc/dayjs.fenxianglu.cn/'
+              icon:'https://dayjs.fenxianglu.cn/assets/favicon.png'
             },
             {
               text: 'timeago.js',
@@ -598,7 +598,7 @@ export default {
             {
               text: 'CSS triangle generator',
               url: 'http://apps.eky.hk/css-triangle-generator/',
-              icon: 'http://apps.eky.hk/css-triangle-generator/favicon.ico'
+              icon: 'http://apps.eky.hk/css-triangle-generator/favicon.gif'
             },
             {
               text:'SASS to CSS',
@@ -655,7 +655,7 @@ export default {
             {
               text: '全国高校制服図鑑',
               url: 'http://www.seihuku-zukan.com/',
-              icon:'http://www.seihuku-zukan.com/banner/s_cut004.gif',
+              icon:'http://uniform.wingzero.tw/favicon.png',
             }
           ]
         },
