@@ -42,25 +42,87 @@ export default {
             {
               text: '今日热榜',
               url: 'https://tophub.today/',
+              icon:'https://tophub.today/favicon.ico',
               desc:'今天发生了什么'
             },
+            
             {
               text: 'speedtest',
               url: 'https://www.speedtest.cn/',
               desc:'测网速'
             },
+
             {
-              text: 'iData知识搜索',
+              text: 'wikiHow',
+              url: 'https://zh.wikihow.com/',
+              desc:'互联网上最值得信赖的指南网站'
+            },
+
+           {
+              text: 'wallhaven 壁纸',
+              url: 'https://wallhaven.cc/',
+              icon: 'http://wallhaven.cc/favicon.ico'
+            },
+            {
+              text: 'Pexels 免费素材图片',
+              url: 'https://www.pexels.com/',
+              icon: 'https://www.pexels.com/favicon.ico',
+              desc:'才华横溢的摄影作者在这里免费分享最精彩的素材图片和视频'
+            },
+            
+            {
+              text: 'iData',
               url: 'https://www.cn-ki.net/',
+              icon:'https://www.cn-ki.net/favicon.ico'
             },
-            {
-              text: 'Wuxia World',
-              url: 'https://www.wuxiaworld.com/',
-              desc:'国内小说英文版'
-            },
+            
             {
               text: '医学微视',
               url: 'https://www.mvyxws.com/',
+              icon:'https://www.mvyxws.com/favicon.ico',
+            },
+            {
+              text: '默沙东诊疗手册',
+              url: 'https://www.msdmanuals.cn/',
+              icon:'https://www.msdmanuals.cn/favicon.ico',
+              desc:'一个涵盖了医学所有领域成千上万主题的广泛医学信息来源。'
+            },
+            {
+              text: '热点后续',
+              url: 'https://houxu.app/',
+              icon:'https://i.loli.net/2021/11/20/n7aIwgPxlekyUGX.png',
+              desc:'有记忆的新闻，持续追踪社会热点'
+            },
+            {
+              text: '万能法律咨询',
+              url: 'https://ai.12348.gov.cn/pc/',
+              icon:'https://ai.12348.gov.cn/pc/favicon.ico',
+              desc:'根据问卷提示填写相关信息，在线为您免费出具法律意见书，供您参考'
+            },
+            {
+              text: '全历史',
+              url: 'https://www.allhistory.com/',
+              icon:'http://favicon.cccyun.cc/https://www.allhistory.com/',
+              desc:'知识地图制作分享平台，它将地图和文字结合，反映中国历史、军事、地理、文化等方面的知识'
+            },
+            {
+              text: '中国地图',
+              url: 'https://www.ageeye.cn/',
+              icon:'https://www.ageeye.cn/statics/logo-small-3.png',
+              desc:'沉浸在纵横开阔、左图右史的知识海洋中'
+            },
+            {
+              text: '做音乐',
+              url: 'https://learningmusic.ableton.com/',
+              desc:'学习到音乐创作的基础知识，无需任何经验或设备，在浏览器中完成所有工作'
+            },
+            {
+              text: '临时验证码',
+              url: 'https://temp-mail.org/zh/',
+            },
+            {
+              text: '微词云',
+              url: 'https://www.weiciyun.com/',
             },
             {
               text: '特殊符号大全',
@@ -69,35 +131,32 @@ export default {
             {
               text: 'windy 天气',
               url: 'https://www.windy.com/',
+              icon:'https://www.windy.com/favicon.ico',
             },
-            {
-              text: 'wallhaven 壁纸',
-              url: 'https://wallhaven.cc/',
-              icon: 'http://favicon.cccyun.cc/wallhaven.cc'
-            },
-            
-            {
-              text: 'waifu2x',
-              url: 'http://waifu2x.udp.jp/',
-              desc:'图片画质增强'
-            },
-            {
-              text: 'alltoall 格式转换',
-              url: 'https://www.alltoall.net/',
-            },
-            {
-              text: ' LALAL.AI',
-              url: 'https://www.lalal.ai/',
-              desc:'伴奏提取'
-            },
+
+           
             {
               text: 'DeepL 翻译',
               url: 'https://www.deepl.com/',
+              icon: 'http://favicon.cccyun.cc/www.deepl.com',
               desc:'更地道的翻译'
             },
             {
               text: 'GBT乐赏游戏空间',
               url: 'http://gbtgame.ys168.com/',
+              icon: 'http://gbtgame.ys168.com/favicon.ico',
+            },
+            {
+              text: 'Wuxia World',
+              url: 'https://www.wuxiaworld.com/',
+              icon:'https://www.wuxiaworld.com/favicon.ico',
+              desc:'海外版的起点小说网，看小说的同时学习英文'
+            },
+            {
+              text: '学发音',
+              url: 'https://zh.forvo.com/languages/',
+              icon:'https://zh.forvo.com/favicon.ico',
+              desc:'世界各地的母语者教你正确发音'
             },
             
           ]
@@ -108,28 +167,46 @@ export default {
             {
               text: 'crazygames',
               url: 'https://www.crazygames.com/',
+              icon: 'http://favicon.cccyun.cc/https://www.crazygames.com/',
               desc: '在线游戏网站'
             },
             {
               text: 'indiexpo',
               url: 'https://www.indiexpo.net/zh',
-              icon:'http://favicon.cccyun.cc/www.indiexpo.net/zh',
               desc: '独立游戏网站'
             },
             {
               text: 'Yikm',
               url: 'http://www.yikm.net',
+              icon: 'http://favicon.cccyun.cc/http://www.yikm.net/',
               desc: '复古游戏网站'
             },
             {
               text: 'Mr.doob',
               url: 'https://mrdoob.com/',
+              icon: 'https://mrdoob.com/favicon.ico',
               desc: '有趣网页合集'
             },
             {
               text: 'beatstage 音游',
               url: 'https://www.beatstage.com/',
               icon:'https://www.beatstage.com/favicon.ico'
+            },
+            {
+              text: '找色差',
+              url: 'http://www.cuishuai.cc/game/',
+              desc:'它说我是个瞎子???'
+            },
+            {
+              text: '解谜游戏',
+              url: 'https://nazo.one-story.cn/',
+              desc:'目前第11关'
+            },
+            {
+              text: '人生重开模拟器',
+              url: 'http://liferestart.syaro.io/view/index.html',
+              icon:'https://github.com/favicon.ico',
+              desc:'这垃圾的人生一点也不想呆了'
             },
             {
               text: 'TouchPianist',
@@ -139,7 +216,13 @@ export default {
             {
               text: '灵魂社区',
               url: 'http://soulapartment.net/',
+              icon: 'http://soulapartment.net/favicon.ico',
               desc:'暖心的社区'
+            },
+            {
+              text: 'HTML5 神奇效果',
+              url: 'http://fff.cmiscm.com/',
+              desc:'各种神奇效果'
             },
             {
               text: 'GNOOSIC',
@@ -147,13 +230,27 @@ export default {
               desc:'AI音乐推荐'
             },
             {
+              text: '人工智障写作',
+              url: 'http://if.caiyunai.com/dream/',
+              icon:'https://caiyunai.com/favicon.ico',
+              desc:'彩云小梦尝鲜版 - AI续写'
+            },
+            {
               text: 'Dear Website',
               url: 'https://www.thiswebsitewillselfdestruct.com/',
+              icon:'https://i.loli.net/2021/11/20/a18pevYWqrlUD9V.png',
               desc:'一个会自杀的网站'
+            },
+            {
+              text: '地图生成器',
+              url: 'https://azgaar.github.io/Fantasy-Map-Generator/',
+              icon:'https://github.com/favicon.ico',
+              desc:'Azgaar的幻想地图生成器'
             },
             {
               text: 'behind the name',
               url: 'https://www.behindthename.com/',
+              icon: 'https://www.behindthename.com/favicon.ico',
               desc:'名字的起源和历史'
             },
             {
@@ -164,31 +261,37 @@ export default {
             {
               text: 'Rain Mood',
               url: 'https://www.rainymood.com/',
+              icon: 'https://www.rainymood.com/favicon.ico',
               desc:'听雨的声音'
             },
             {
               text: 'A SOFT MURMUR',
               url: 'https://asoftmurmur.com/',
+              icon: 'https://asoftmurmur.com/favicon.ico',
               desc:'背景白噪音'
             },
             {
               text: 'window-swap',
               url: 'https://www.window-swap.com/',
+              icon: 'https://www.window-swap.com/favicon.ico',
               desc: "开窗户"
             },
             {
               text: 'Selfie2Anime',
               url: 'https://selfie2anime.com/',
+              icon: 'https://selfie2anime.com/favicon.ico',
               desc: "动漫头像生成"
             },
             {
               text: 'hackertyper',
               url: 'http://hackcode.ishoulu.com/hackertyper/',
+              icon:'https://www.iplaysoft.com/favicon.ico',
               desc: "假装黑客"
             },
             {
               text: 'Windows Update Prank',
               url: 'http://hackcode.ishoulu.com/hackertyper/',
+              icon:'https://www.microsoft.com/favicon.ico',
               desc: "假装Windows升级界面"
             }
           ]
@@ -206,13 +309,40 @@ export default {
               icon: 'https://cdn-sqn.aigei.com/assets/site/img/icon/favicon.ico'
             },
             {
+              text: '皮卡智能抠图',
+              url: 'https://www.picup.shop/currencyBatch.html',
+              icon:'https://i.loli.net/2021/11/20/KMv5Ot1DP7XQNwL.png'
+            },
+            {
               text: '创客贴',
               url: 'https://www.chuangkit.com/dc.html',
               desc: '在线平面设计工具'
             },
             {
+              text: 'YASAI',
+              url: 'https://wangyasai.github.io/designtools.html',
+              desc: '一个设计工具'
+            },
+            {
+              text: 'slidesgo',
+              url: 'https://slidesgo.com/theme/isometric-proposal',
+              desc:'免费谷歌幻灯片主题和PowerPoint模板'
+            },
+            {
+              text: 'SVG背景图案',
+              url: 'https://cn.pattern.monster/',
+              icon: 'https://i.loli.net/2021/11/20/yarVDv2NizLMsxk.png',
+              desc: '一个简单的重复性SVG图案在线生成器'
+            },
+            {
+              text: '书法生成',
+              url: 'http://www.ziticq.com/shufa/',
+              desc: '在线书法字体生成，AI矢量书法字体'
+            },
+            {
               text: 'ShapeFactory',
               url: 'https://shapefactory.co',
+              icon:'https://shapefactory.co/static/images/joy.svg',
               desc: 'LOGO、Duotone图片一键生成'
             },
             {
@@ -239,17 +369,31 @@ export default {
             {
               text: 'Free Mesh Gradient',
               url: 'https://products.ls.graphics/mesh-gradients/',
+              icon:'https://assets-global.website-files.com/5bfd1275cc56e15ce750b18e/5bfd1275cc56e1460d50b19d_Logo%20Copy%202.svg',
               desc: '渐变色配色网站'
             },
             {
               text: 'Creativemass',
               url: 'https://creativemass.cn/',
+              icon: 'https://creativemass.cn/favicon.ico',
               desc: '创意导航网站'
+            },
+            {
+              text: '设计导航',
+              url: 'http://hao.shejidaren.com/',
+              desc: '设计导航网站'
             },
             {
               text: '切九图',
               url: 'https://lab.magiconch.com/v/sns-image',
             },
+            {
+              text: '油画转换',
+              url: 'https://fotosketcher.com/',
+              icon:'http://favicon.cccyun.cc/https://fotosketcher.com',
+              desc:'用你的数码照片创造美丽的艺术作品'
+            },
+
             
           ]
         },
@@ -259,33 +403,75 @@ export default {
             {
               text: 'Tool 工具箱',
               url: 'https://tool.lu/',
+              icon: 'https://tool.lu/favicon.ico',
             },
             {
               text: 'Miku 工具箱',
               url: 'https://tools.miku.ac/',
+              icon: 'https://tools.miku.ac/favicon.ico',
+            },
+            
+            {
+              text: 'Text-Difference',
+              url: 'https://www.qianbo.com.cn/Tool/Text-Difference/',
+              icon:'https://www.qianbo.org/favicon.ico',
+              desc:'在线文本对比工具'
+            },
+            {
+              text: 'waifu2x',
+              url: 'http://waifu2x.udp.jp/',
+              icon: 'http://waifu2x.udp.jp/favicon.ico',
+              desc:'图片画质增强'
+            },
+            {
+              text: 'alltoall 格式转换',
+              url: 'https://www.alltoall.net/',
+              icon: 'http://favicon.cccyun.cc/www.alltoall.net/',
+            },
+
+            {
+              text: 'aconvert 格式转换',
+              url: 'https://www.aconvert.com/',
+            },
+            
+            {
+              text: 'AirPortal 空投',
+              url: 'https://airportal.cn/',
+              icon:'http://favicon.cccyun.cc/airportal.cn',
+              desc:'只要您的设备联网，您就可以通过它在任意系统、任意设备间传输文件'
+              
+            },
+            {
+              text: 'AI音轨分离',
+              url: 'https://dango.ai/',
+              desc:'借助我们音质至上的AI技术，您可以从任何音频中分离出伴奏，人声，和声，鼓点，贝斯等轨道'
+            },
+             {
+              text: ' LALAL.AI',
+              url: 'https://www.lalal.ai/',
+              icon: 'https://www.lalal.ai/favicon.ico',
+              desc:'伴奏提取'
             },
             {
               text: '菜鸟工具',
               url: 'https://c.runoob.com/',
+              icon: 'https://c.runoob.com/favicon.ico',
             },
             {
               text: 'OSCHINA',
               url: 'https://tool.oschina.net/',
+              icon: 'https://tool.oschina.net/favicon.ico',
             },
 
             {
               text: '脚本之家',
               url: 'http://tools.jb51.net/',
+              icon: 'http://tools.jb51.net/favicon.ico',
             },
             {
               text: 'W3Cschool',
               url: 'https://123.w3cschool.cn/webtools',
               icon: 'https://7n.w3cschool.cn/statics/images/favicon.ico'
-            },
-            {
-              text: 'Text-Difference',
-              url: 'https://www.qianbo.com.cn/Tool/Text-Difference/',
-              desc:'在线文本对比工具'
             },
           ]
         },
@@ -314,11 +500,13 @@ export default {
             },
             {
               text: 'React',
-              url: 'https://zh-hans.reactjs.org/'
+              url: 'https://zh-hans.reactjs.org/',
+              icon: 'https://zh-hans.reactjs.org/favicon.ico',
             },
             {
               text: 'Ant Design',
-              url: 'https://ant.design/'
+              url: 'https://ant.design/',
+              icon:'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
             },
             {
               text: 'React Bootstrap',
@@ -335,7 +523,8 @@ export default {
             },
             {
               text: 'Swiper',
-              url: 'https://www.swiper.com.cn/'
+              url: 'https://www.swiper.com.cn/',
+              icon: 'https://www.swiper.com.cn/favicon.ico',
             },
             {
               text: 'Can I use',
@@ -359,6 +548,7 @@ export default {
             {
               text: 'Day.js',
               url: 'https://dayjs.fenxianglu.cn/',
+              icon:'http://favicon.cccyun.cc/dayjs.fenxianglu.cn/'
             },
             {
               text: 'timeago.js',
@@ -387,6 +577,11 @@ export default {
               icon: 'https://cssicon.space/favicon.png'
             },
             {
+              text: 'CSS.gg',
+              url: 'https://css.gg/',
+              desc:'700+用CSS做的图标'
+            },
+            {
               text: 'Animate.css',
               url: 'https://animate.style/',
             },
@@ -403,10 +598,12 @@ export default {
             {
               text: 'CSS triangle generator',
               url: 'http://apps.eky.hk/css-triangle-generator/',
+              icon: 'http://apps.eky.hk/css-triangle-generator/favicon.ico'
             },
             {
               text:'SASS to CSS',
-              url:'https://www.sassmeister.com/'
+              url:'https://www.sassmeister.com/',
+              icon: 'https://www.sassmeister.com/favicon.ico'
             }
 
           ]
@@ -458,6 +655,7 @@ export default {
             {
               text: '全国高校制服図鑑',
               url: 'http://www.seihuku-zukan.com/',
+              icon:'http://www.seihuku-zukan.com/banner/s_cut004.gif',
             }
           ]
         },
@@ -467,7 +665,10 @@ export default {
   },
   methods:{
     showIcon(item){
-      return item.icon ? item.icon : 'http://favicon.cccyun.cc/'+item.url
+      // item.url.replace(/^https?\:\/\//i, "")
+      //http://favicon.cccyun.cc
+      return item.icon ? item.icon : `https://ico.kucat.cn/get.php?url=${item.url}` 
+      // return item.icon ? item.icon : `http://favicon.cccyun.cc/${item.url}` 
     },
 
     },
