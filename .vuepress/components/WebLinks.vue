@@ -144,7 +144,7 @@ export default {
             {
               text: 'GBT乐赏游戏空间',
               url: 'http://gbtgame.ys168.com/',
-              icon: 'http://gbtgame.ys168.com/favicon.ico',
+              icon: 'https://i.loli.net/2021/11/23/EcXvOgWeTQYnd15.png',
             },
             {
               text: 'Wuxia World',
@@ -420,7 +420,7 @@ export default {
             {
               text: 'waifu2x',
               url: 'http://waifu2x.udp.jp/',
-              icon: 'http://waifu2x.udp.jp/favicon.ico',
+              icon: 'https://i.loli.net/2021/11/23/THz83N1uabCr9xZ.png',
               desc:'图片画质增强'
             },
             {
@@ -466,7 +466,7 @@ export default {
             {
               text: '脚本之家',
               url: 'http://tools.jb51.net/',
-              icon: 'http://tools.jb51.net/favicon.ico',
+              icon: 'https://i.loli.net/2021/11/23/rPqHdTRQYzyKtgS.png',
             },
             {
               text: 'W3Cschool',
@@ -598,7 +598,7 @@ export default {
             {
               text: 'CSS triangle generator',
               url: 'http://apps.eky.hk/css-triangle-generator/',
-              icon: 'http://apps.eky.hk/css-triangle-generator/favicon.gif'
+              icon: 'https://i.loli.net/2021/11/23/I8xO1YpZi7qW6d4.png'
             },
             {
               text:'SASS to CSS',
