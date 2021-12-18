@@ -2,9 +2,9 @@
 title: Vue.js  v-for 列表渲染
 date: 2021-04-08
 categories:
- - Vue.js
+ - Vue
 tags:
- - Vue指令
+ - Vue
 ---
 
 

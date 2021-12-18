@@ -3,6 +3,8 @@ title: JavaScript 数组和函数
 date: 2021-02-04
 categories:
  - JavaScript
+tags:
+ - 数组
 ---
 <!-- more -->
 ## 数组

@@ -2,9 +2,9 @@
 title: Vue.js 全局组件和局部组件
 date: 2021-04-13
 categories:
- - Vue.js
+ - Vue
 tags:
- - Vue指令
+ - Vue
 ---
 
 # 组件注册

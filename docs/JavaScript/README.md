@@ -5,8 +5,7 @@ categories:
  - JavaScript
 tags:
  - JavaScript
- - js类型转换
-sticky: 3
+ - 类型转换
 ---
 <!-- more -->
 ## JavaScript初体验

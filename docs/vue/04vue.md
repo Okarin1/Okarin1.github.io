@@ -2,9 +2,9 @@
 title: Vue.js 响应式
 date: 2021-04-03
 categories:
- - Vue.js
+ - Vue
 tags:
- - Vue.js
+ - Vue
 ---
 
 ## 数据响应式原理

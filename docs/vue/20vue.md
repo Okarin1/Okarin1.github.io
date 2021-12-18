@@ -2,10 +2,9 @@
 title: Vue.js 生命周期
 date: 2021-04-25
 categories:
- - Vue.js
+ - Vue
 tags:
- - Vue.js 
- - Vue语法
+ - Vue
 ---
 
 # 生命周期

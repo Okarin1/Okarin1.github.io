@@ -6,7 +6,7 @@ module.exports = {
   },
   title: "送报少年",
   description: "EL PSY CONGROO!",
-  
+
   head: [
     [
       "link",
@@ -30,7 +30,7 @@ module.exports = {
 
   ,
   theme: "reco",
-  
+
 
   //themeConfig
 
@@ -49,14 +49,28 @@ module.exports = {
 
 
     //导航栏
-    nav: [
-      {"text": "主页","link": "/","icon": "reco-home"},
-      {"text": "时间线","link": "/timeline/","icon": "reco-date"},
-      {"text": "文档","icon": "reco-message","items": [
-          
+    nav: [{
+        "text": "主页",
+        "link": "/",
+        "icon": "reco-home"
+      },
+      {
+        "text": "时间线",
+        "link": "/timeline/",
+        "icon": "reco-date"
+      },
+      {
+        "text": "文档",
+        "icon": "reco-message",
+        "items": [
+
           {
-          "text": "JavaScript",
-          "link": "/docs/JavaScript/"
+            "text": "JavaScript",
+            "link": "/docs/JavaScript/"
+          },
+          {
+            "text": "JavaScript进阶",
+            "link": "/docs/deepJavaScript/"
           },
           {
             "text": "Vue.js",
@@ -70,12 +84,16 @@ module.exports = {
         ]
       },
 
-      {"text": "导航","icon": "reco-menu","link": "/blogs/web/"},
+      {
+        "text": "导航",
+        "icon": "reco-menu",
+        "link": "/web/"
+      },
     ],
 
-    
+
     // blogConfig
-    
+
     blogConfig: {
 
       category: {
@@ -87,20 +105,38 @@ module.exports = {
         "text": "标签"
       },
 
-      socialLinks: [     // 信息栏展示社交信息
-        { icon: 'reco-github', link: 'https://github.com/Okarin1' },
-        { icon: 'reco-qq', link: 'http://wpa.qq.com/msgrd?v=3&uin=201747922&site=qq&menu=yes' },
-        { icon: 'reco-mail', link: 'mailto:okarin1024@163.com' },
-        { icon: 'reco-zhihu', link: 'https://www.zhihu.com/people/qing-qi-gu-jiu-8' },
-        { icon: 'reco-weibo', link: 'https://weibo.com/u/6331216566' },
-        { icon: 'reco-bilibili', link: 'https://space.bilibili.com/23812673' },
+      socialLinks: [ // 信息栏展示社交信息
+        {
+          icon: 'reco-github',
+          link: 'https://github.com/Okarin1'
+        },
+        {
+          icon: 'reco-qq',
+          link: 'http://wpa.qq.com/msgrd?v=3&uin=201747922&site=qq&menu=yes'
+        },
+        {
+          icon: 'reco-mail',
+          link: 'mailto:okarin1024@163.com'
+        },
+        {
+          icon: 'reco-zhihu',
+          link: 'https://www.zhihu.com/people/qing-qi-gu-jiu-8'
+        },
+        {
+          icon: 'reco-weibo',
+          link: 'https://weibo.com/u/6331216566'
+        },
+        {
+          icon: 'reco-bilibili',
+          link: 'https://space.bilibili.com/23812673'
+        },
       ],
     },
-    
+
 
 
     // 侧边栏
-    subSidebar: 'auto' ,//在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
+    subSidebar: 'auto', //在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
     sidebar: {
       "/docs/wechat/": [
         "",
@@ -155,16 +191,26 @@ module.exports = {
         "09javascript",
         "10javascript"
       ],
+      "/docs/deepJavaScript/": [
+        "",
+        "01JS",
+        "02JS",
+        "03JS",
+        "04JS",
+        "05JS",
+        "06JS",
+        "07JS",
+        "08JS",
+      ]
     },
 
     valineConfig: {
-      appId: 'yeDg5szPSdXGKoeivis6nl2n-gzGzoHsz',// your appId
+      appId: 'yeDg5szPSdXGKoeivis6nl2n-gzGzoHsz', // your appId
       appKey: 'wiFT09cYp9C3CnRqJ0mvaKVO', // your appKey
     },
 
 
-    friendLink: [
-      {
+    friendLink: [{
         title: 'vuepress-theme-reco',
         desc: 'A simple and beautiful vuepress Blog & Doc theme.',
         logo: "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",

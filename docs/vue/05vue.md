@@ -2,10 +2,9 @@
 title: Vue.js mustache 插值操作
 date: 2021-04-04
 categories:
- - Vue.js
+ - Vue
 tags:
- - Vue.js 
- - 插值绑定
+ - Vue
 ---
 
 # 插值绑定

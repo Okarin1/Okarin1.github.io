@@ -2,9 +2,9 @@
 title: Vue.js  v-on 事件绑定
 date: 2021-04-06
 categories:
- - Vue.js
+ - Vue
 tags:
- - Vue指令
+ - Vue
 ---
 
 ## 指令 v-on

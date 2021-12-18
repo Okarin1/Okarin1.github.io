@@ -2,10 +2,9 @@
 title: Vue.js  v-bind 属性绑定
 date: 2021-04-05
 categories:
- - Vue.js
+ - Vue
 tags:
- - Vue.js 
- - Vue指令
+ - Vue
 
 ---
 

@@ -2,9 +2,10 @@
 title: Vue.js vuecli 脚手架
 date: 2021-04-29
 categories:
- - Vue.js
+ - Vue
 tags:
  - Vue CLI
+ - Vue
 ---
 
 

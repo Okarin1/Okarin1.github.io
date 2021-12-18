@@ -2,9 +2,10 @@
 title: Vue.js Vuex
 date: 2021-07-11
 categories:
- - Vue.js
+ - Vue
 tags:
  - Vuex
+ - Vue
 ---
 
 ## Vuex的核心概念

@@ -2,10 +2,11 @@
 title: Vue.js vue-router 路由
 date: 2021-04-29
 categories:
- - Vue.js
+ - Vue
 tags:
  - Vue Router
  - keep-alive
+ - Vue
 ---
 
 # vue-router

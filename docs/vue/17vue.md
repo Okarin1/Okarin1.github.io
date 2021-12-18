@@ -2,9 +2,10 @@
 title: Vue.js 组件访问之子访问父 
 date: 2021-04-17
 categories:
- - Vue.js
+ - Vue
 tags:
  - 组件通信
+ - Vue
 ---
 
 # parent

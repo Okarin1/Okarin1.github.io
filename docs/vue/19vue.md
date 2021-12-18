@@ -2,10 +2,9 @@
 title: Vue.js 过渡效果
 date: 2021-04-23
 categories:
- - Vue.js
+ - Vue
 tags:
- - Vue.js 
- - Vue语法
+ - Vue
 ---
 
 # 进入/离开 & 列表过渡

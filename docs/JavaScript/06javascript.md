@@ -3,8 +3,6 @@ title: JavaScript 内置对象和数据类型
 date: 2021-02-07
 categories:
  - JavaScript
-tags:
- - js内置对象
 ---
 <!-- more -->
 ## 内置对象

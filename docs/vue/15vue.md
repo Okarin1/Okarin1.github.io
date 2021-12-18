@@ -2,9 +2,10 @@
 title: Vue.js 组件通信 子传父 双向绑定
 date: 2021-04-15
 categories:
- - Vue.js
+ - Vue
 tags:
  - 组件通信
+ - Vue
 ---
 
 # 自定义事件

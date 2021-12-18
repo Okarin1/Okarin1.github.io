@@ -4,8 +4,8 @@ date: 2021-11-20
 sidebar: 'auto'
 tags:
  - Cordova
- - android
- - vue
+ - Android
+ - Vue
 ---
 
 <!-- more -->

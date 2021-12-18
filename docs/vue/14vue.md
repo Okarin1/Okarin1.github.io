@@ -2,10 +2,10 @@
 title: Vue.js 父组件和子组件通信
 date: 2021-04-14
 categories:
- - Vue.js
+ - Vue
 tags:
- - 组件通信
  - props
+ - Vue
 ---
 
 

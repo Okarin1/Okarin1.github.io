@@ -2,9 +2,9 @@
 title: Vue.js 个人学习笔记
 date: 2021-03-29
 categories:
- - Vue.js
+ - Vue
 tags:
- - Vue.js 
+ - Vue
 sticky: 2
 ---
 

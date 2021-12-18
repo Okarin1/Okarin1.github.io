@@ -2,9 +2,10 @@
 title: Vue.js keep-alive
 date: 2021-04-22
 categories:
- - Vue.js
+ - Vue
 tags:
  - keep-alive
+ - Vue
 ---
 
 # keep-alive

@@ -2,10 +2,9 @@
 title: Vue.js slot-插槽
 date: 2021-04-23
 categories:
- - Vue.js
+ - Vue
 tags:
- - Vue.js 
- - Vue语法
+ - Vue
 ---
 
 # 组件的插槽
