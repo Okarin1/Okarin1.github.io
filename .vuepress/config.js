@@ -87,7 +87,7 @@ module.exports = {
       {
         "text": "导航",
         "icon": "reco-menu",
-        "link": "/web/"
+        "link": "https://web.okarin.cn/"
       },
     ],
 
