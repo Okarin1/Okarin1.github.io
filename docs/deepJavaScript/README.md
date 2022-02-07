@@ -47,6 +47,11 @@ sticky: 3
 ![](https://i.loli.net/2021/12/02/Afkg5QqyTn6DUcL.png)
 
 
+
+#### 浏览器引擎和 JS 引擎的关系
+
+![image-20211202173611546](https://s2.loli.net/2022/02/07/14jgMnamkviFTWf.png)
+
 #### V8引擎
 
 ![](https://i.loli.net/2021/12/02/GjsvhYmbrWuZAeN.png)
@@ -55,9 +60,13 @@ sticky: 3
 
 [V8引擎详细的解析执行过程](https://zhuanlan.zhihu.com/p/111386872/)
 
+![image-20211202174329105](https://s2.loli.net/2022/02/07/UyBgsbH1iVDhXkW.png)
 
 **V8引擎**对JavaScript源代码进行**解析**，进行词法分析（生成tokens，包含type，value等）和语法分析，然后生成 **抽象语法树**（AST）,然后通过 **字节码解释器**（Ignition）将抽象语法树转换成 **字节码**（bytecode）（因为JS运行环境是不一定的，不同的环境可能拥有不同的CPU，能执行的机器指令是有区别的，所以转换成能跨平台的字节码，然后转换成汇编语言，最后再转换成不同平台的机器码）。**而对于多次执行的JS代码**，会通过**优化编译器**（TurboFan）来生成 **优化后的机器码**，直接进行执行，来提升性能。（而当函数执行操作不一致时，通过 **动态反优化** （ Deoptimization） 重新转换成字节码，所以对应参数传值性能更高，如TS）。
 
+
+
+![image-20211202181114208](https://s2.loli.net/2022/02/07/Pp9X83diNyvkFOQ.png)
 
 ##### V8引擎的解析图（官方）
 
