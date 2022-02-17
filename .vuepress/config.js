@@ -207,6 +207,7 @@ module.exports = {
         "10JS",
         "11JS",
         "12JS",
+        "13JS",
       ]
     },
 
