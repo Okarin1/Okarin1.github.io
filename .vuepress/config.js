@@ -224,16 +224,16 @@ module.exports = {
         link: 'https://vuepress-theme-reco.recoluan.com'
       },
       {
-        title: '午后南杂',
-        desc: 'Enjoy when you can, and endure when you must.',
-        logo: "https://www.recoluan.com/head.png",
-        link: 'https://www.recoluan.com'
-      },
-      {
         title: 'lookroot的个人空间',
         desc: '追求理想与现实的平衡',
         logo: "https://www.lookroot.cn/logo.png",
         link: 'https://www.lookroot.cn/'
+      },
+      {
+        title: 'idealclover',
+        desc: 'Stay simple, stay naive.',
+        logo: "https://image.idealclover.cn/blog/assets/icon.png",
+        link: 'https://idealclover.top/'
       },
     ]
 
