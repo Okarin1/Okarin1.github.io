@@ -210,6 +210,7 @@ module.exports = {
         "13JS",
         "14JS",
         "15JS",
+        "16JS",
       ]
     },
 
