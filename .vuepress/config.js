@@ -212,6 +212,7 @@ module.exports = {
         "15JS",
         "16JS",
         "17JS",
+        "18JS",
       ]
     },
 
