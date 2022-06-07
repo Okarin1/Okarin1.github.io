@@ -8,6 +8,7 @@ node_modules/
 .vuepress/dist
 .temp
 .cache
+/.history
 
 # Hide private file information
 secret.js
