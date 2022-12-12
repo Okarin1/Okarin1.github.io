@@ -1,5 +1,5 @@
 ---
-title: Vue.js 起步
+title: Vue.js 计算属性
 date: 2021-04-02
 categories:
  - Vue
@@ -8,68 +8,69 @@ tags:
 ---
 
 
-## Vue.js实例
+## 计算属性
 
+在模板中可以直接通过插值语法显示一些data中的数据。但在某些情况下，需要对数据转化起来进行显示。为了不使模板臃肿和难以维护。于是就可以将逻辑抽离出去。抽取到methods或者计算属性中。
 
-> 每个 Vue 应用都需要通过实例化 Vue 来实现。语法格式如下：
-
-##### 语法
-
-```
-var vm = new Vue({
-  // 选项
-}
-```
-
-##### 实例
-
-**HTML**
+>对于任何包含响应式数据的复杂逻辑，你都应该使用计算属性。计算属性将被混入到组件实例中。所有的getter和setter的this上下文自动地绑定为组件实例。
 
 ```html
-<div id="App">
-    <h1>site : {{site}}</h1>
-    <h1>url : {{url}}</h1>
-    <h1>{{details()}}</h1>
-</div>
+    <template id="my-app">
+      <h2>{{getFullName()}}</h2>
+      <h2>{{fullName}}</h2>
+      <h2>{{getReverseMessage()}}</h2>
+      <h2>{{reverseMeassage}}</h2>
+    </template>
 ```
-
-**JS**
 
 ```js
-var vm = new Vue({
-        el: '#App',
-        data: {
-            site: "送报少年",
-            url: "okarin.cn"
+data() {
+          return {
+            message: "Hello World",
+            firstName: "kobe",
+            lastName: "Bryant",
+            message: "Hello World",
+          };
         },
-        methods: {
-            details: function() {
-                return  this.site + " - EL PSY CONGROO!";
+methods: {
+  getFullName() {
+    return this.firstName + this.lastName;
+  },
+  getReverseMessage() {
+    return this.message.split(" ").reverse().join(" ");
+  },
+},
+computed: {
+  fullName() {
+    return this.firstName + this.lastName;
+  },
+  reverseMeassage() {
+    return this.message.split(" ").reverse().join(" ");
+  },
+},
+```
+
+### 计算属性的性能提升
+1. 计算属性是有缓存的，当多次使用计算属性时，计算属性中的运算只会执行一次。
+2. 计算属性只有在它的相关依赖发生改变时才会重新求值
+
+### 计算属性的 getter 与 setter
+
+```js
+  fullName:{
+          set: function(newValue){
+              const names = newValue.split(' ');
+              this.firstName = names[0];
+              this.lastName = names[1];
+          },
+          get: function(){
+          return this.firstName + ' ' + this.lastName
+          }
+
+          // fullName: function(){
+          // return this.firstName + ' ' + this.lastName
+          // }
+
             }
-        }
-    })
 ```
-运行结果
-
-```
-site : 送报少年
-url : okarin.cn
-送报少年 - EL PSY CONGROO!！
-```
-
->可以看到在 Vue 构造器中有一个el 参数，它是 DOM 元素中的 id。在上面实例中 id 为 App，在 div 元素中：
-
-```html
-<div id="App">
-    <h1>site : {{site}}</h1>
-    <h1>url : {{url}}</h1>
-    <h1>{{details()}}</h1>
-</div>
-```
-
-其中data 用于定义属性，实例中有两个属性分别为：site、url
-
-methods 用于定义的函数，可以通过 return 来返回函数值。
-
-{{ }} 用于输出对象属性和函数返回值。
-
+>Vue会对计算属性的类型进行判断，如果计算属性是一个函数，那么就会使用bind重新绑定this，然后返回一个新的函数。所以计算属性看起来像是一个函数。

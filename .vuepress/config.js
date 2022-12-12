@@ -73,13 +73,13 @@ module.exports = {
             "link": "/docs/deepJavaScript/"
           },
           {
-            "text": "Vue.js",
-            "link": "/docs/vue/"
+            "text": "Vue",
+            "link": "/docs/Vue/"
           },
           {
-            "text": "微信小程序",
-            "link": "/docs/wechat/"
-          },
+            "text": "SQL",
+            "link": "/docs/SQL/"
+          }
 
         ]
       },
@@ -138,20 +138,7 @@ module.exports = {
     // 侧边栏
     subSidebar: 'auto', //在所有页面中启用自动生成子侧边栏，原 sidebar 仍然兼容
     sidebar: {
-      "/docs/wechat/": [
-        "",
-        "01wechat",
-        "02wechat",
-        "03wechat",
-        "04wechat",
-        "05wechat",
-        "06wechat",
-        "07wechat",
-        "08wechat",
-        "09wechat",
-        "10wechat",
-      ],
-      "/docs/vue/": [
+      "/docs/Vue/": [
         "",
         "01vue",
         "02vue",
@@ -159,21 +146,6 @@ module.exports = {
         "04vue",
         "05vue",
         "06vue",
-        "07vue",
-        "08vue",
-        "09vue",
-        "10vue",
-        "11vue",
-        "12vue",
-        "13vue",
-        "14vue",
-        "15vue",
-        "16vue",
-        "17vue",
-        "18vue",
-        "19vue",
-        "20vue",
-        "21vue",
         "22vue",
         "23vue",
         "24vue"
@@ -212,7 +184,12 @@ module.exports = {
         "15JS",
         "16JS",
         "17JS",
-        "18JS",
+        "18JS"
+      ],
+      "/docs/SQL/": [
+        "",
+        "01SQL",
+        "02SQL"
       ]
     },
 

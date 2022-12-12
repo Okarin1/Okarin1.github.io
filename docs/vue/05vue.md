@@ -1,5 +1,5 @@
 ---
-title: Vue.js mustache 插值操作
+title: Vue.js v-model双向绑定
 date: 2021-04-04
 categories:
  - Vue
@@ -7,169 +7,74 @@ tags:
  - Vue
 ---
 
-# 插值绑定
+## 双向绑定
 
->插值绑定是Vue.js中最常见，最基本的语法，绑定的内容主要有文本插值和HTML插值
-
-## 文本插值
-
-用两个左右花括号将要绑定的变量、值、表达式括住就可以实现
-
-### 实例
-
-**HTML**
-```HTML
-    <div id="app">
-		<h1>{{ title }}</h1>
-	</div>
-```
-**JS**
-```JS
-let vm = new Vue({
-				el: '#app',
-				data(){
-					return{
-						title:'HELLO'
-					}
-				}
-			})
-```
-#### 运行结果
-```
-HELLO
-```
-
-## v-text
-
-**HTML**
+### v-model
 ```html
-  <div id="app">
-		<h1 v-text></h1>
-	</div>
-```
-**JS**
-```JS
-let vm = new Vue({
-				el: '#app',
-				data:{
-						title:'HELLO'
-				}
-			})
-```
-#### 运行结果
-```
-HELLO
+      <input type="text"  v-model="message">
+      <h2>{{message}}</h2>
 ```
 
-
-## HTML插值
-
-HTML插值可以动态渲染DOM节点
-
-#### 实例
-
-**CSS**
-```CSS
-<style>
-  .align-center {
-    text-align: center;
-  }
-</style>
+### 双向绑定的原理
+通过监听input事件，拿到event.target.value，更新message的值。
+```html
+  <input type="text"  :value="message" @input="inputChange">
+  <h2>{{message}}</h2>
 ```
-**HTML**
-```HTML
-<div id="app" style="width: 800px;margin: 0 auto;">
-  <div>{{ blog }}</div>
-  <hr>
-  <div v-html="blog"></div>
+```js
+  methods:{
+          inputChange(event){
+            this.message = event.target.value
+          }
+        }
+```
+
+### v-model绑定其他表单
+
+```html
+<div id='box'>
+	<input type="checkbox" v-model="checkgroup" value="vue"/>vue
+	<input type="checkbox" v-model="checkgroup" value="react"/>react
+	<input type="checkbox" v-model="checkgroup" value="jquery"/>jquery
 </div>
 ```
-**JS**
-```JS
-let vm = new Vue({
-    el: '#app',
-    data () {
-      return {
-        blog: `<h2 class="align-center">送报少年</h2>
-          <p class="align-center">浮云柳絮无根蒂，天地阔远随飞扬。</p>`
-      }
+
+```js
+new Vue({
+    el:'#box',
+    data:{
+        checkgroup:[];
     }
-  })
-```
-#### 运行结果
-```
-<h2 class="align-center">送报少年</h2> <p class="align-center">浮云柳絮无根蒂，天地阔远随飞扬。</p>
-
-                                    送报少年
-                        浮云柳絮无根蒂，天地阔远随飞扬。
+})
 ```
 
-可以看到，文本插值中的代码被解释为节点的文本内容，而HTML插值中的代码被渲染为视图节点。
+### v-model修饰符
 
-# 插值操作 其他指令的使用
+1. lazy
 
-## v-once
-
-> 不能继续用DOM渲染更改
-
-## v-pre
-
->直接显示里面的内容
-
+取代 `input` 监听 `change` 事件
 
 ```html
-  <div id="app">
-		<h1 v-pre>{{ title }}</h1>
-	</div>
+<div id='box'>
+    <input v-model.lazy='mytext'>
+    <!-- 这里的mytext不会实时修改而是在input失去焦点的时候才会修改-->
+    {{mytext}} 
+</div>
 ```
+2. number
 
-```JS
-let vm = new Vue({
-				el: '#app',
-				data:{
-						title:'HELLO'
-				}
-			})
-```
-
-#### 运行结果
-
-```
-{{ title }}
-
-```
-
-## v-cloak
-
->渲染的时候会删除这个指令（属性），用于解决渲染过长的显示异常问题。
-
-**案例**
-
-```css
-
-<style>
-[v-cloak]{
-  display:none;
-}
-</style>
-
-```
-
+输入字符串转为有效的数字
 
 ```html
-  <div id="app" v-cloak>
-		<h1>{{ title }}</h1>
-	</div>
+<input type="number" v-model.number="mynumber"/>
+{{mynumber}}
 ```
 
+3. trim
 
-```JS
-setTimeout(function(){
-let vm = new Vue({
-				el: '#app',
-				data:{
-						title:'HELLO'
-				}
-			})
-},1000)
+输入首尾空格过滤
+
+```html
+<input type="text" v-model.trim="myusername"/>
+|{{myusername}}|  
 ```

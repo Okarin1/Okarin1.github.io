@@ -1,27 +1,23 @@
 ---
-title: Vue.js 个人学习笔记
+title: Vue 的一些笔记
 date: 2021-03-29
 categories:
  - Vue
 tags:
  - Vue
-sticky: 2
 ---
 
-## Vue.js介绍
+## 引入
+>CDN 引入
 
-Vue.js（读音 /vjuː/, 类似于 view） 是一套构建用户界面的渐进式框架。
 
-Vue 只关注视图层， 采用自底向上增量开发的设计。
-
-Vue 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。
-
-## 需要了解的知识
-* HTML
-* CSS
-* JavaScript
   
-## 第一个实例
+## Vue2实例
+
+```html
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+```
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -43,6 +39,38 @@ new Vue({
   }
 })
 </script>
+</body>
+</html>
+```
+
+
+## Vue3实例
+
+```html
+<script src="https://unpkg.com/vue@next"></script>
+```
+
+```html
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+      
+  </div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const okarin = {
+      template:'<h2>HelloWorld</h2>'
+    }
+    const app = Vue.createApp(okarin);
+    app.mount("#app")
+  </script>
 </body>
 </html>
 ```
