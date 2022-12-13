@@ -74,7 +74,7 @@ module.exports = {
           },
           {
             "text": "Vue",
-            "link": "/docs/Vue/"
+            "link": "/docs/vue/"
           },
           {
             "text": "SQL",
