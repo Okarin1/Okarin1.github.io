@@ -189,7 +189,8 @@ module.exports = {
       "/docs/SQL/": [
         "",
         "01SQL",
-        "02SQL"
+        "02SQL",
+        "03SQL"
       ]
     },
 
